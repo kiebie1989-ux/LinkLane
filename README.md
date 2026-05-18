@@ -46,7 +46,7 @@ install_windows.bat
 
 **From Mozilla Add-ons (recommended):**
 
-Install LinkLane directly from [addons.mozilla.org](https://addons.mozilla.org) – search for "LinkLane".
+Install LinkLane directly from [addons.mozilla.org](https://addons.mozilla.org/de/firefox/addon/linklane/).
 
 **For developers – local testing only:**
 
@@ -56,7 +56,7 @@ If you want to test changes to the extension locally:
 3. Click "Load Temporary Add-on"
 4. Select the `addon/manifest.json` file
 
-> Note: Temporary add-ons are removed when Firefox is closed. For permanent local installs, the extension needs to be signed. See [Mozilla's documentation](https://extensionworkshop.com/documentation/publish/signing-and-distribution-overview/).
+> Note: Temporary add-ons are removed when Firefox is closed.
 
 ### Step 3: Configure LinkLane
 
