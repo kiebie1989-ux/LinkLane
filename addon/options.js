@@ -117,7 +117,7 @@ async function autoDetectBrowsers() {
       if (statusEl) statusEl.innerHTML = `<span style="color:#aaa">${t("options_no_browsers_found")}</span>`;
     }
   } catch (e) {
-    if (statusEl) statusEl.innerHTML = `<span class="err">Fehler: ${e.message}</span>`;
+    if (statusEl) statusEl.innerHTML = `<span class="err">${escHtml(e.message)}</span>`;
   }
 }
 

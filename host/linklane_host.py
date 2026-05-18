@@ -11,6 +11,10 @@ import subprocess
 import platform
 import os
 
+MAX_MESSAGE_SIZE = 1 * 1024 * 1024  # 1 MB
+ALLOWED_URL_SCHEMES = ("http://", "https://")
+ALLOWED_OPEN_MODES = {"tab", "window"}
+
 KNOWN_BROWSERS = {
     "Linux": [
         {"name": "Chromium",       "path": "/usr/bin/chromium-browser",      "supports_new_window": True},
@@ -49,6 +53,8 @@ def read_message():
     if not raw_length:
         return None
     length = struct.unpack('=I', raw_length)[0]
+    if length > MAX_MESSAGE_SIZE:
+        sys.exit(1)
     message = sys.stdin.buffer.read(length).decode('utf-8')
     return json.loads(message)
 
@@ -68,6 +74,16 @@ def detect_browsers():
             found.append({"name": b["name"], "path": b["path"], "supports_new_window": b.get("supports_new_window", True)})
             seen_names.add(b["name"])
     return found
+
+def validate_browser_path(path):
+    """Accept only absolute paths to existing executable files."""
+    if not os.path.isabs(path):
+        return False
+    if not os.path.isfile(path):
+        return False
+    if not os.access(path, os.X_OK):
+        return False
+    return True
 
 def open_url(browser_path, url, open_mode="tab"):
     system = platform.system()
@@ -101,6 +117,15 @@ def main():
         open_mode = message.get("open_mode", "tab")
         if not url or not browser:
             send_message({"status": "error", "message": "Missing url or browser"})
+            return
+        if not any(url.startswith(s) for s in ALLOWED_URL_SCHEMES):
+            send_message({"status": "error", "message": "Unsupported URL scheme"})
+            return
+        if open_mode not in ALLOWED_OPEN_MODES:
+            send_message({"status": "error", "message": "Invalid open_mode"})
+            return
+        if not validate_browser_path(browser):
+            send_message({"status": "error", "message": "Invalid browser path"})
             return
         result = open_url(browser, url, open_mode)
         if result is True:

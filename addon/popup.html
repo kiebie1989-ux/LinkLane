@@ -1,16 +1,23 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <meta charset="utf-8">
   <link rel="icon" href="icons/icon48.png">
   <style>
-    * { box-sizing: border-box; margin: 0; padding: 0; }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
     body {
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
       width: 260px;
       background: #1a1a2e;
       color: #e0e0e0;
     }
+
     .header {
       background: linear-gradient(135deg, #16213e, #0f3460);
       padding: 14px 16px;
@@ -19,9 +26,21 @@
       gap: 10px;
       border-bottom: 2px solid #e94560;
     }
-    .logo { font-size: 20px; }
-    .title { font-size: 17px; font-weight: 700; color: #e94560; letter-spacing: 1px; }
-    .body { padding: 14px; }
+
+    .logo {
+      font-size: 20px;
+    }
+
+    .title {
+      font-size: 17px;
+      font-weight: 700;
+      color: #e94560;
+      letter-spacing: 1px;
+    }
+
+    .body {
+      padding: 14px;
+    }
 
     /* Status-Zeile mit deutlichem Button */
     .status-row {
@@ -33,9 +52,19 @@
       border-radius: 8px;
       padding: 10px 12px;
     }
-    .status-label { font-size: 13px; font-weight: 600; }
-    .status-label.active { color: #4caf50; }
-    .status-label.inactive { color: #e94560; }
+
+    .status-label {
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    .status-label.active {
+      color: #4caf50;
+    }
+
+    .status-label.inactive {
+      color: #e94560;
+    }
 
     /* Klarer An/Aus Button statt unsichtbarem Toggle */
     .toggle-btn {
@@ -52,11 +81,15 @@
       min-width: 48px;
       text-align: center;
     }
+
     .toggle-btn.off {
       background: #555;
       color: #aaa;
     }
-    .toggle-btn:hover { filter: brightness(1.15); }
+
+    .toggle-btn:hover {
+      filter: brightness(1.15);
+    }
 
     .rule-count {
       background: #16213e;
@@ -66,26 +99,59 @@
       color: #aaa;
       margin-bottom: 12px;
     }
-    .rule-count span { color: #e94560; font-weight: 700; font-size: 16px; }
+
+    .rule-count span {
+      color: #e94560;
+      font-weight: 700;
+      font-size: 16px;
+    }
 
     .btn {
-      display: block; width: 100%; padding: 10px;
-      background: #e94560; color: white;
-      border: none; border-radius: 6px; cursor: pointer;
-      font-size: 13px; font-weight: 600; text-align: center;
+      display: block;
+      width: 100%;
+      padding: 10px;
+      background: #e94560;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 13px;
+      font-weight: 600;
+      text-align: center;
       transition: background .2s;
     }
-    .btn:hover { background: #c73652; }
+
+    .btn:hover {
+      background: #c73652;
+    }
 
     .host-status {
-      display: flex; align-items: center; gap: 6px;
-      font-size: 11px; color: #aaa; margin-top: 10px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11px;
+      color: #aaa;
+      margin-top: 10px;
     }
-    .dot { width: 8px; height: 8px; border-radius: 50%; background: #555; flex-shrink: 0; }
-    .dot.ok { background: #4caf50; }
-    .dot.err { background: #e94560; }
+
+    .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #555;
+      flex-shrink: 0;
+    }
+
+    .dot.ok {
+      background: #4caf50;
+    }
+
+    .dot.err {
+      background: #e94560;
+    }
   </style>
 </head>
+
 <body>
   <div class="header">
     <div class="logo">🔀</div>
@@ -107,4 +173,5 @@
   </div>
   <script src="popup.js"></script>
 </body>
+
 </html>

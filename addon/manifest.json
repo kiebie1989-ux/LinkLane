@@ -5,7 +5,7 @@
   "description": "__MSG_description__",
   "default_locale": "en",
   "author": "LinkLane Contributors",
-  "homepage_url": "https://github.com/linklane/linklane",
+  "homepage_url": "https://github.com/kiebie1989-ux/LinkLane",
   "icons": {
     "48": "icons/icon48.png",
     "96": "icons/icon96.png"
