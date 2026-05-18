@@ -44,16 +44,19 @@ install_windows.bat
 
 ### Step 2: Install the Firefox extension
 
-**Option A – From Mozilla Add-ons (recommended):**
-*(Coming soon)*
+**From Mozilla Add-ons (recommended):**
 
-**Option B – Manual install:**
+Install LinkLane directly from [addons.mozilla.org](https://addons.mozilla.org) – search for "LinkLane".
+
+**For developers – local testing only:**
+
+If you want to test changes to the extension locally:
 1. Open Firefox and go to `about:debugging`
 2. Click "This Firefox"
 3. Click "Load Temporary Add-on"
 4. Select the `addon/manifest.json` file
 
-For a permanent install without the Add-ons store, the extension needs to be signed. See [Mozilla's documentation](https://extensionworkshop.com/documentation/publish/signing-and-distribution-overview/).
+> Note: Temporary add-ons are removed when Firefox is closed. For permanent local installs, the extension needs to be signed. See [Mozilla's documentation](https://extensionworkshop.com/documentation/publish/signing-and-distribution-overview/).
 
 ### Step 3: Configure LinkLane
 
@@ -76,7 +79,7 @@ For a permanent install without the Add-ons store, the extension needs to be sig
 
 ## Requirements
 
-- Firefox 91+
+- Firefox 142+
 - Python 3.6+ (for the native host)
 
 ---
