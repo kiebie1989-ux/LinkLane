@@ -408,6 +408,7 @@ function renderHelp() {
   if (install) {
     install.innerHTML = `
       <p>${t("help_install_p1")}</p>
+      <p>${t("help_install_github")} <a href="https://github.com/kiebie1989-ux/LinkLane/tree/main/host" target="_blank" style="color:#e94560">github.com/kiebie1989-ux/LinkLane</a></p>
       <p><strong>Linux</strong> &nbsp;<code>cd host &amp;&amp; bash install_linux.sh</code></p>
       <p><strong>macOS</strong> &nbsp;<code>cd host &amp;&amp; bash install_macos.sh</code></p>
       <p><strong>Windows</strong> &nbsp;<code>cd host &amp;&amp; install_windows.bat</code></p>

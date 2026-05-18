@@ -251,6 +251,9 @@
   "help_install_p1": {
     "message": "L'hôte natif est un petit script Python 3 qui reçoit les URLs de l'extension et les ouvre dans le navigateur configuré. Il doit être installé une fois par machine."
   },
+  "help_install_github": {
+    "message": "Téléchargez le script depuis\u00a0:"
+  },
   "help_install_note": {
     "message": "Python 3.6+ requis. Télécharger depuis"
   },

@@ -251,6 +251,9 @@
   "help_install_p1": {
     "message": "Der native Host ist ein kleines Python-3-Skript, das URLs von der Erweiterung empf\u00e4ngt und im konfigurierten Browser \u00f6ffnet. Muss einmalig pro Ger\u00e4t installiert werden."
   },
+  "help_install_github": {
+    "message": "Skript herunterladen von:"
+  },
   "help_install_note": {
     "message": "Python 3.6+ erforderlich. Download unter"
   },

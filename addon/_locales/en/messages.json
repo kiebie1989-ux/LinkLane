@@ -250,8 +250,9 @@
   },
   "help_install_p1": {
     "message": "The native host is a small Python 3 script that receives URLs from the extension and opens them in the configured browser. It must be installed once per machine."
-  },
-  "help_install_note": {
+  },  "help_install_github": {
+    "message": "Download the script from:"
+  },  "help_install_note": {
     "message": "Python 3.6+ required. Download from"
   },
   "help_faq_1_q": {

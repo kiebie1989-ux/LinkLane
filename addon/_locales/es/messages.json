@@ -250,8 +250,9 @@
   },
   "help_install_p1": {
     "message": "El host nativo es un peque\u00f1o script de Python 3 que recibe URLs de la extensi\u00f3n y las abre en el navegador configurado. Se instala una vez por equipo."
-  },
-  "help_install_note": {
+  },  "help_install_github": {
+    "message": "Descarga el script desde:"
+  },  "help_install_note": {
     "message": "Se requiere Python 3.6+. Desc\u00e1rgalo en"
   },
   "help_faq_1_q": {
