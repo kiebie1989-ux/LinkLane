@@ -68,7 +68,7 @@ async function save(showNotice = true) {
 
 function checkSetup() {
   const banner = document.getElementById("setupBanner");
-  browsers.length === 0 ? banner.classList.add("visible") : banner.classList.remove("visible");
+  banner.classList.add("visible");
 }
 
 // ---- Browsers ----
