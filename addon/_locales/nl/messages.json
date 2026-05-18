@@ -250,9 +250,11 @@
   },
   "help_install_p1": {
     "message": "De native host is een klein Python 3-script dat URL's van de extensie ontvangt en opent in de geconfigureerde browser. Eenmalig per apparaat installeren."
-  },  "help_install_github": {
+  },
+  "help_install_github": {
     "message": "Download het script van:"
-  },  "help_install_note": {
+  },
+  "help_install_note": {
     "message": "Python 3.6+ vereist. Downloaden via"
   },
   "help_faq_1_q": {
