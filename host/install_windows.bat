@@ -28,10 +28,11 @@ set SCRIPT_DIR=%USERPROFILE%\bin\linklane
 set SCRIPT_PATH=%SCRIPT_DIR%\linklane_host.py
 set MANIFEST_PATH=%SCRIPT_DIR%\linklane_host.json
 set REG_KEY=HKCU\Software\Mozilla\NativeMessagingHosts\linklane_host
+set HOST_SRC=%~dp0linklane_host.py
 
 :: Create directory and copy files
 if not exist "%SCRIPT_DIR%" mkdir "%SCRIPT_DIR%"
-copy /Y linklane_host.py "%SCRIPT_PATH%" >nul
+copy /Y "%HOST_SRC%" "%SCRIPT_PATH%" >nul
 echo   OK Host script installed to %SCRIPT_PATH%
 
 :: Create manifest

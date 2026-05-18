@@ -21,9 +21,11 @@ fi
 PYTHON_VERSION=$(python3 -c 'import sys; print(sys.version_info[:2])')
 echo "  ✓ Python 3 found ($PYTHON_VERSION)"
 
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+
 mkdir -p "$HOME/bin"
 SCRIPT_PATH="$HOME/bin/linklane_host.py"
-cp linklane_host.py "$SCRIPT_PATH"
+cp "$SCRIPT_DIR/linklane_host.py" "$SCRIPT_PATH"
 chmod +x "$SCRIPT_PATH"
 echo "  ✓ Host script installed to $SCRIPT_PATH"
 
