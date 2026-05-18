@@ -10,6 +10,40 @@ const t = (key) => {
   return browser.i18n.getMessage(key) || key;
 };
 
+// ---- DOM helper ----
+function mkEl(tag, props, ...children) {
+  const node = document.createElement(tag);
+  if (props) {
+    for (const [k, v] of Object.entries(props)) {
+      if (v == null) continue;
+      switch (k) {
+        case "cls":    node.className = v; break;
+        case "style":  node.style.cssText = v; break;
+        case "txt":    node.textContent = v; break;
+        case "id":     node.id = v; break;
+        case "title":  node.title = v; break;
+        case "href":   node.href = v; break;
+        case "target": node.target = v; break;
+        case "type":   node.type = v; break;
+        case "value":  node.value = v; break;
+        case "checked": node.checked = v; break;
+        default:
+          if (k.startsWith("data_")) node.dataset[k.slice(5)] = v;
+          else node.setAttribute(k, v);
+      }
+    }
+  }
+  for (const child of children) {
+    if (child == null) continue;
+    node.appendChild(typeof child === "string" ? document.createTextNode(child) : child);
+  }
+  return node;
+}
+
+function clearEl(el) {
+  while (el.firstChild) el.removeChild(el.firstChild);
+}
+
 // ---- Init ----
 async function load() {
   const [data, fetchedPresets] = await Promise.all([
@@ -67,36 +101,45 @@ async function save(showNotice = true) {
 }
 
 function checkSetup() {
-  const banner = document.getElementById("setupBanner");
-  banner.classList.add("visible");
+  document.getElementById("setupBanner").classList.add("visible");
 }
 
 // ---- Browsers ----
 function renderBrowsers() {
   const el = document.getElementById("browsersList");
+  clearEl(el);
   if (browsers.length === 0) {
-    el.innerHTML = `<div class="empty-state"><div class="icon">🌐</div>${t("options_no_browsers_yet")}</div>`;
+    el.appendChild(mkEl("div", { cls: "empty-state" },
+      mkEl("div", { cls: "icon", txt: "🌐" }),
+      t("options_no_browsers_yet")
+    ));
     return;
   }
-  el.innerHTML = `<table class="rules-table">
-    <thead><tr>
-      <th>${t("options_browser_name")}</th>
-      <th>${t("options_browser_path")}</th>
-      <th></th>
-    </tr></thead>
-    <tbody>
-      ${browsers.map((b, i) => `<tr>
-        <td><strong>${escHtml(b.name)}</strong></td>
-        <td><span class="pattern-badge">${escHtml(b.path)}</span></td>
-        <td><button class="btn btn-danger" data-action="delete-browser" data-index="${i}">${t("options_delete")}</button></td>
-      </tr>`).join('')}
-    </tbody>
-  </table>`;
+  const tbody = mkEl("tbody");
+  browsers.forEach((b, i) => {
+    tbody.appendChild(mkEl("tr", null,
+      mkEl("td", null, mkEl("strong", { txt: b.name })),
+      mkEl("td", null, mkEl("span", { cls: "pattern-badge", txt: b.path })),
+      mkEl("td", null, mkEl("button", {
+        cls: "btn btn-danger", txt: t("options_delete"),
+        data_action: "delete-browser", data_index: String(i)
+      }))
+    ));
+  });
+  el.appendChild(mkEl("table", { cls: "rules-table" },
+    mkEl("thead", null, mkEl("tr", null,
+      mkEl("th", { txt: t("options_browser_name") }),
+      mkEl("th", { txt: t("options_browser_path") }),
+      mkEl("th", {})
+    )),
+    tbody
+  ));
 }
 
 function updateBrowserSelect() {
   const sel = document.getElementById("newBrowserSelect");
-  sel.innerHTML = browsers.map(b => `<option value="${escHtml(b.id)}">${escHtml(b.name)}</option>`).join('');
+  clearEl(sel);
+  browsers.forEach(b => sel.appendChild(mkEl("option", { value: b.id, txt: b.name })));
 }
 
 async function autoDetectBrowsers() {
@@ -112,47 +155,59 @@ async function autoDetectBrowsers() {
       });
       await save(false);
       renderAll();
-      if (statusEl) statusEl.innerHTML = `<span class="ok">✓ ${result.browsers.length} ${t("options_browsers_found")}</span>`;
+      if (statusEl) {
+        clearEl(statusEl);
+        statusEl.appendChild(mkEl("span", { cls: "ok", txt: `\u2713 ${result.browsers.length} ${t("options_browsers_found")}` }));
+      }
     } else {
-      if (statusEl) statusEl.innerHTML = `<span style="color:#aaa">${t("options_no_browsers_found")}</span>`;
+      if (statusEl) statusEl.textContent = t("options_no_browsers_found");
     }
   } catch (e) {
-    if (statusEl) statusEl.innerHTML = `<span class="err">${escHtml(e.message)}</span>`;
+    if (statusEl) {
+      clearEl(statusEl);
+      statusEl.appendChild(mkEl("span", { cls: "err", txt: e.message }));
+    }
   }
 }
 
 // ---- Rules ----
 function renderRules() {
   const el = document.getElementById("rulesContainer");
+  clearEl(el);
   if (rules.length === 0) {
-    el.innerHTML = `<div class="empty-state"><div class="icon">🔀</div>${t("options_no_rules_yet")}</div>`;
+    el.appendChild(mkEl("div", { cls: "empty-state" },
+      mkEl("div", { cls: "icon", txt: "\uD83D\uDD00" }),
+      t("options_no_rules_yet")
+    ));
     return;
   }
-  el.innerHTML = `<table class="rules-table">
-    <thead><tr>
-      <th>${t("options_pattern")}</th>
-      <th>${t("options_browser")}</th>
-      <th>${t("options_open_mode")}</th>
-      <th>${t("options_enabled")}</th>
-      <th></th>
-    </tr></thead>
-    <tbody>
-      ${rules.map((r, i) => {
-    const b = browsers.find(b => b.id === r.browserId);
+  const tbody = mkEl("tbody");
+  rules.forEach((r, i) => {
+    const b = browsers.find(x => x.id === r.browserId);
     const modeLabel = r.openMode === "window" ? t("options_open_mode_window") : t("options_open_mode_tab");
-    return `<tr>
-          <td><span class="pattern-badge">${escHtml(r.pattern)}</span></td>
-          <td><span class="browser-badge">${escHtml(b ? b.name : '?')}</span></td>
-          <td><span style="font-size:11px;color:#aaa">${escHtml(modeLabel)}</span></td>
-          <td><label class="toggle">
-            <input type="checkbox" data-action="toggle-rule" data-index="${i}" ${r.enabled ? 'checked' : ''}>
-            <span class="slider"></span>
-          </label></td>
-          <td><button class="btn btn-danger" data-action="delete-rule" data-index="${i}">${t("options_delete")}</button></td>
-        </tr>`;
-  }).join('')}
-    </tbody>
-  </table>`;
+    const cb = mkEl("input", { type: "checkbox", checked: r.enabled, data_action: "toggle-rule", data_index: String(i) });
+    const label = mkEl("label", { cls: "toggle" }, cb, mkEl("span", { cls: "slider" }));
+    tbody.appendChild(mkEl("tr", null,
+      mkEl("td", null, mkEl("span", { cls: "pattern-badge", txt: r.pattern })),
+      mkEl("td", null, mkEl("span", { cls: "browser-badge", txt: b ? b.name : "?" })),
+      mkEl("td", null, mkEl("span", { style: "font-size:11px;color:#aaa", txt: modeLabel })),
+      mkEl("td", null, label),
+      mkEl("td", null, mkEl("button", {
+        cls: "btn btn-danger", txt: t("options_delete"),
+        data_action: "delete-rule", data_index: String(i)
+      }))
+    ));
+  });
+  el.appendChild(mkEl("table", { cls: "rules-table" },
+    mkEl("thead", null, mkEl("tr", null,
+      mkEl("th", { txt: t("options_pattern") }),
+      mkEl("th", { txt: t("options_browser") }),
+      mkEl("th", { txt: t("options_open_mode") }),
+      mkEl("th", { txt: t("options_enabled") }),
+      mkEl("th", {})
+    )),
+    tbody
+  ));
 }
 
 // ---- Presets ----
@@ -166,80 +221,86 @@ function getVisiblePresets() {
 function renderPresets() {
   const visible = getVisiblePresets();
   const grid = document.getElementById("presetsGrid");
+  clearEl(grid);
   if (visible.length === 0) {
-    grid.innerHTML = `<span style="font-size:12px;color:#555">${t("options_no_presets_yet")}</span>`;
+    grid.appendChild(mkEl("span", { style: "font-size:12px;color:#555", txt: t("options_no_presets_yet") }));
     return;
   }
-  grid.innerHTML = visible.map((p, i) => {
+  visible.forEach((p, i) => {
     const exists = rules.some(r => r.pattern === p.pattern);
-    return `<div class="preset-chip ${exists ? 'added' : ''}" data-action="add-preset" data-index="${i}" title="${escHtml(p.pattern)}">
-      ${exists ? '✓' : '+'} ${escHtml(p.name)}
-      <span data-action="delete-preset" data-index="${i}" style="margin-left:5px;color:#e94560;cursor:pointer;font-size:12px;line-height:1;" title="${escHtml(t('options_delete'))}">×</span>
-    </div>`;
-  }).join('');
+    grid.appendChild(mkEl("div", {
+      cls: `preset-chip${exists ? " added" : ""}`,
+      title: p.pattern,
+      data_action: "add-preset",
+      data_index: String(i)
+    },
+      `${exists ? "\u2713" : "+"} ${p.name}`,
+      mkEl("span", {
+        style: "margin-left:5px;color:#e94560;cursor:pointer;font-size:12px;line-height:1;",
+        title: t("options_delete"),
+        txt: "\u00d7",
+        data_action: "delete-preset",
+        data_index: String(i)
+      })
+    ));
+  });
 }
 
 function showBrowserPicker(presetIndex) {
   const p = getVisiblePresets()[presetIndex];
   if (!p) return;
-  const existing = document.getElementById("browserPicker");
-  if (existing) existing.remove();
-  const bd = document.getElementById("browserPickerBackdrop");
-  if (bd) bd.remove();
+  document.getElementById("browserPicker")?.remove();
+  document.getElementById("browserPickerBackdrop")?.remove();
 
-  const backdrop = document.createElement("div");
-  backdrop.id = "browserPickerBackdrop";
-  backdrop.style.cssText = "position:fixed;inset:0;background:rgba(0,0,0,0.6);z-index:9998;";
+  const backdrop = mkEl("div", {
+    id: "browserPickerBackdrop",
+    style: "position:fixed;inset:0;background:rgba(0,0,0,0.6);z-index:9998;"
+  });
   document.body.appendChild(backdrop);
 
-  const picker = document.createElement("div");
-  picker.id = "browserPicker";
-  picker.style.cssText = `position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);
-    background:#16213e;border:1px solid #e94560;border-radius:10px;padding:24px;
-    z-index:9999;min-width:320px;box-shadow:0 8px 32px rgba(0,0,0,0.6);`;
+  const picker = mkEl("div", {
+    id: "browserPicker",
+    style: "position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);background:#16213e;border:1px solid #e94560;border-radius:10px;padding:24px;z-index:9999;min-width:320px;box-shadow:0 8px 32px rgba(0,0,0,0.6);"
+  });
   document.body.appendChild(picker);
 
-  const title = document.createElement("div");
-  title.style.cssText = "font-size:15px;font-weight:700;margin-bottom:16px;color:#e0e0e0;";
-  title.textContent = p.name;
-  picker.appendChild(title);
+  picker.appendChild(mkEl("div", { style: "font-size:15px;font-weight:700;margin-bottom:16px;color:#e0e0e0;", txt: p.name }));
 
-  // Open mode select
-  const modeRow = document.createElement("div");
-  modeRow.style.cssText = "margin-bottom:14px;";
-  modeRow.innerHTML = `
-    <div style="font-size:11px;color:#aaa;text-transform:uppercase;margin-bottom:5px">${escHtml(t("options_open_mode"))}</div>
-    <select id="pickerOpenMode" style="background:#0f3460;border:1px solid #1a4a80;border-radius:6px;padding:7px 10px;color:#e0e0e0;font-size:13px;width:100%;">
-      <option value="tab">${escHtml(t("options_open_mode_tab"))}</option>
-      <option value="window">${escHtml(t("options_open_mode_window"))}</option>
-    </select>`;
-  picker.appendChild(modeRow);
-
-  const sub = document.createElement("div");
-  sub.style.cssText = "font-size:11px;color:#aaa;text-transform:uppercase;margin-bottom:8px;";
-  sub.textContent = t("options_browser");
-  picker.appendChild(sub);
+  const modeSelect = mkEl("select", {
+    id: "pickerOpenMode",
+    style: "background:#0f3460;border:1px solid #1a4a80;border-radius:6px;padding:7px 10px;color:#e0e0e0;font-size:13px;width:100%;"
+  },
+    mkEl("option", { value: "tab", txt: t("options_open_mode_tab") }),
+    mkEl("option", { value: "window", txt: t("options_open_mode_window") })
+  );
+  picker.appendChild(mkEl("div", { style: "margin-bottom:14px;" },
+    mkEl("div", { style: "font-size:11px;color:#aaa;text-transform:uppercase;margin-bottom:5px", txt: t("options_open_mode") }),
+    modeSelect
+  ));
+  picker.appendChild(mkEl("div", { style: "font-size:11px;color:#aaa;text-transform:uppercase;margin-bottom:8px;", txt: t("options_browser") }));
 
   browsers.forEach(b => {
     const supportsWindow = b.supportsNewWindow !== false;
-    const btn = document.createElement("button");
-    btn.style.cssText = `display:block;width:100%;background:#0f3460;border:1px solid #1a4a80;
-      border-radius:6px;padding:10px 14px;color:#e0e0e0;cursor:pointer;text-align:left;
-      font-size:13px;margin-bottom:8px;`;
-    btn.dataset.action = "pick-browser";
-    btn.dataset.browserId = b.id;
-    btn.dataset.presetIndex = presetIndex;
-    btn.dataset.supportsNewWindow = supportsWindow ? "1" : "0";
-    btn.innerHTML = `<strong>${escHtml(b.name)}</strong>${!supportsWindow ? ` <span style="font-size:10px;color:#888;font-weight:normal">(${escHtml(t("options_tab_only"))})</span>` : ''}<span style="color:#aaa;font-size:11px;display:block;margin-top:2px">${escHtml(b.path)}</span>`;
+    const btn = mkEl("button", {
+      style: "display:block;width:100%;background:#0f3460;border:1px solid #1a4a80;border-radius:6px;padding:10px 14px;color:#e0e0e0;cursor:pointer;text-align:left;font-size:13px;margin-bottom:8px;",
+      data_action: "pick-browser",
+      data_browserId: b.id,
+      data_presetIndex: String(presetIndex),
+      data_supportsNewWindow: supportsWindow ? "1" : "0"
+    },
+      mkEl("strong", { txt: b.name }),
+      ...(!supportsWindow ? [mkEl("span", { style: "font-size:10px;color:#888;font-weight:normal", txt: ` (${t("options_tab_only")})` })] : []),
+      mkEl("span", { style: "color:#aaa;font-size:11px;display:block;margin-top:2px", txt: b.path })
+    );
     btn.addEventListener("mouseover", () => btn.style.borderColor = "#e94560");
     btn.addEventListener("mouseout", () => btn.style.borderColor = "#1a4a80");
     picker.appendChild(btn);
   });
 
-  const cancel = document.createElement("button");
-  cancel.style.cssText = `width:100%;background:transparent;border:1px solid #555;
-    border-radius:6px;padding:6px 14px;color:#aaa;cursor:pointer;font-size:12px;margin-top:4px;`;
-  cancel.textContent = t("options_cancel");
+  const cancel = mkEl("button", {
+    style: "width:100%;background:transparent;border:1px solid #555;border-radius:6px;padding:6px 14px;color:#aaa;cursor:pointer;font-size:12px;margin-top:4px;",
+    txt: t("options_cancel")
+  });
   cancel.addEventListener("click", () => { picker.remove(); backdrop.remove(); });
   picker.appendChild(cancel);
   backdrop.addEventListener("click", () => { picker.remove(); backdrop.remove(); });
@@ -337,15 +398,10 @@ document.getElementById("saveBrowser").addEventListener("click", async () => {
 document.getElementById("showAddRule").addEventListener("click", () => {
   updateBrowserSelect();
   document.getElementById("addRuleForm").classList.toggle("visible");
-  // Pattern hint mit Beispielen befüllen
-  const hint = t("options_pattern_hint")
+  document.getElementById("patternHint").textContent = t("options_pattern_hint")
     .replace("{0}", "*.zoom.us/j/*")
     .replace("{1}", "meet.google.com")
     .replace("{2}", "jira.meinefirma.de");
-  document.getElementById("patternHint").innerHTML = hint
-    .replace(/(\*[^\s|]+)/g, '<code style="color:#7eb8f7">$1</code>')
-    .replace(/(meet\.google\.com)/g, '<code style="color:#7eb8f7">$1</code>')
-    .replace(/(jira\.[^\s<]+)/g, '<code style="color:#7eb8f7">$1</code>');
 });
 document.getElementById("cancelRule").addEventListener("click", () => {
   document.getElementById("addRuleForm").classList.remove("visible");
@@ -357,7 +413,6 @@ document.getElementById("saveRule").addEventListener("click", async () => {
   const openMode = document.getElementById("newOpenMode").value;
   if (!pattern || !browserId) { alert(t("options_fill_all_fields")); return; }
   rules.push({ id: `r_${Date.now()}`, pattern, browserId, openMode, enabled: true });
-  // Auto-create preset if pattern not already covered
   const allPatterns = [...presets.map(p => p.pattern), ...userPresets.map(p => p.pattern)];
   if (!allPatterns.includes(pattern)) {
     userPresets.push({ name: name || pattern, pattern });
@@ -373,9 +428,11 @@ document.getElementById("checkHost").addEventListener("click", async () => {
   const result = document.getElementById("hostCheckResult");
   result.textContent = t("setup_checking");
   const response = await browser.runtime.sendMessage({ action: "testHost" });
-  result.innerHTML = response?.connected
-    ? `<span class="ok">✓ ${t("setup_connected")}</span>`
-    : `<span class="err">✗ ${t("setup_not_connected")}</span>`;
+  clearEl(result);
+  result.appendChild(mkEl("span", {
+    cls: response?.connected ? "ok" : "err",
+    txt: response?.connected ? `\u2713 ${t("setup_connected")}` : `\u2717 ${t("setup_not_connected")}`
+  }));
 });
 
 document.getElementById("langSelect").addEventListener("change", async (e) => {
@@ -389,45 +446,78 @@ document.getElementById("langSelect").addEventListener("change", async (e) => {
 function renderHelp() {
   const patterns = document.getElementById("help-body-patterns");
   if (patterns) {
-    patterns.innerHTML = `
-      <p>${t("help_patterns_p1")}</p>
-      <table>
-        <thead><tr><th>${t("help_col_pattern")}</th><th>${t("help_col_matches")}</th></tr></thead>
-        <tbody>
-          <tr><td>meet.google.com</td><td>${t("help_ex_meet")}</td></tr>
-          <tr><td>*.zoom.us/j/*</td><td>${t("help_ex_zoom")}</td></tr>
-          <tr><td>teams.microsoft.com/l/meetup-join</td><td>${t("help_ex_teams")}</td></tr>
-          <tr><td>jira.mycompany.com</td><td>${t("help_ex_jira")}</td></tr>
-          <tr><td>*.mycompany.com</td><td>${t("help_ex_wildcard")}</td></tr>
-        </tbody>
-      </table>
-      <p style="margin-top:10px;">${t("help_patterns_note")}</p>`;
+    clearEl(patterns);
+    patterns.appendChild(mkEl("p", { txt: t("help_patterns_p1") }));
+    const tbody = mkEl("tbody");
+    [
+      ["meet.google.com",                   t("help_ex_meet")],
+      ["*.zoom.us/j/*",                     t("help_ex_zoom")],
+      ["teams.microsoft.com/l/meetup-join", t("help_ex_teams")],
+      ["jira.mycompany.com",                t("help_ex_jira")],
+      ["*.mycompany.com",                   t("help_ex_wildcard")],
+    ].forEach(([pat, desc]) => {
+      tbody.appendChild(mkEl("tr", null,
+        mkEl("td", { txt: pat }),
+        mkEl("td", { txt: desc })
+      ));
+    });
+    patterns.appendChild(mkEl("table", null,
+      mkEl("thead", null, mkEl("tr", null,
+        mkEl("th", { txt: t("help_col_pattern") }),
+        mkEl("th", { txt: t("help_col_matches") })
+      )),
+      tbody
+    ));
+    patterns.appendChild(mkEl("p", { style: "margin-top:10px;", txt: t("help_patterns_note") }));
   }
 
   const install = document.getElementById("help-body-install");
   if (install) {
-    install.innerHTML = `
-      <p>${t("help_install_p1")}</p>
-      <p>${t("help_install_github")} <a href="https://github.com/kiebie1989-ux/LinkLane/tree/main/host" target="_blank" style="color:#e94560">github.com/kiebie1989-ux/LinkLane</a></p>
-      <p><strong>Linux</strong> &nbsp;<code>cd host &amp;&amp; bash install_linux.sh</code></p>
-      <p><strong>macOS</strong> &nbsp;<code>cd host &amp;&amp; bash install_macos.sh</code></p>
-      <p><strong>Windows</strong> &nbsp;<code>cd host &amp;&amp; install_windows.bat</code></p>
-      <p style="color:#aaa;margin-top:6px;">${t("help_install_note")} <code>python.org</code></p>`;
+    clearEl(install);
+    install.appendChild(mkEl("p", { txt: t("help_install_p1") }));
+    const ghP = mkEl("p", {}, t("help_install_github") + " ");
+    ghP.appendChild(mkEl("a", {
+      href: "https://github.com/kiebie1989-ux/LinkLane/tree/main/host",
+      target: "_blank",
+      style: "color:#e94560",
+      txt: "github.com/kiebie1989-ux/LinkLane"
+    }));
+    install.appendChild(ghP);
+    [
+      ["Linux",   "cd host && bash install_linux.sh"],
+      ["macOS",   "cd host && bash install_macos.sh"],
+      ["Windows", "cd host && install_windows.bat"],
+    ].forEach(([os, cmd]) => {
+      install.appendChild(mkEl("p", {},
+        mkEl("strong", { txt: os }),
+        "\u00a0\u00a0",
+        mkEl("code", { txt: cmd })
+      ));
+    });
+    install.appendChild(mkEl("p", { style: "color:#aaa;margin-top:6px;" },
+      t("help_install_note") + " ",
+      mkEl("code", { txt: "python.org" })
+    ));
   }
 
   const faq = document.getElementById("help-body-faq");
   if (faq) {
-    faq.innerHTML = `
-      <p><strong>${t("help_faq_1_q")}</strong><br>${t("help_faq_1_a")}</p>
-      <p><strong>${t("help_faq_2_q")}</strong><br>${t("help_faq_2_a")}</p>
-      <p><strong>${t("help_faq_3_q")}</strong><br>${t("help_faq_3_a")} <code>/usr/bin/chromium-browser</code></p>
-      <p><strong>${t("help_faq_4_q")}</strong><br>${t("help_faq_4_a")} <code>~/.mozilla/native-messaging-hosts/</code></p>`;
+    clearEl(faq);
+    [
+      [t("help_faq_1_q"), t("help_faq_1_a"), null],
+      [t("help_faq_2_q"), t("help_faq_2_a"), null],
+      [t("help_faq_3_q"), t("help_faq_3_a"), "/usr/bin/chromium-browser"],
+      [t("help_faq_4_q"), t("help_faq_4_a"), "~/.mozilla/native-messaging-hosts/"],
+    ].forEach(([q, a, code]) => {
+      const p = mkEl("p", {},
+        mkEl("strong", { txt: q }),
+        document.createElement("br"),
+        a + (code ? " " : ""),
+        ...(code ? [mkEl("code", { txt: code })] : [])
+      );
+      faq.appendChild(p);
+    });
   }
-}
-
-// ---- Helper ----
-function escHtml(str) {
-  return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 }
 
 load();
