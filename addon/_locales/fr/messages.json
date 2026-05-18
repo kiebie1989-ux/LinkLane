@@ -1,0 +1,281 @@
+{
+  "description": {
+    "message": "Ouvre automatiquement les URLs dans le bon navigateur. Définissez des règles pour les appels vidéo, les outils de travail et plus encore."
+  },
+  "popup_status_active": {
+    "message": "Actif"
+  },
+  "popup_status_inactive": {
+    "message": "Inactif"
+  },
+  "popup_rules": {
+    "message": "règles actives"
+  },
+  "popup_open_settings": {
+    "message": "Ouvrir les paramètres"
+  },
+  "options_title": {
+    "message": "LinkLane – Paramètres"
+  },
+  "options_rules_title": {
+    "message": "Règles URL"
+  },
+  "options_rules_subtitle": {
+    "message": "Définir quelles URLs s'ouvrent dans quel navigateur"
+  },
+  "options_add_rule": {
+    "message": "Ajouter une règle"
+  },
+  "options_pattern": {
+    "message": "Modèle d'URL"
+  },
+  "options_browser": {
+    "message": "Navigateur"
+  },
+  "options_enabled": {
+    "message": "Actif"
+  },
+  "options_delete": {
+    "message": "Supprimer"
+  },
+  "options_cancel": {
+    "message": "Annuler"
+  },
+  "options_save": {
+    "message": "Ajouter"
+  },
+  "options_saved": {
+    "message": "✓ Enregistré"
+  },
+  "options_presets_title": {
+    "message": "Modèles"
+  },
+  "options_presets_subtitle": {
+    "message": "Cliquer pour ajouter rapidement"
+  },
+  "options_browser_path": {
+    "message": "Chemin de l'exécutable"
+  },
+  "options_browsers_title": {
+    "message": "Navigateurs"
+  },
+  "options_browsers_subtitle": {
+    "message": "Navigateurs cibles pour la redirection d'URLs"
+  },
+  "options_add_browser": {
+    "message": "Ajouter un navigateur"
+  },
+  "options_browser_name": {
+    "message": "Nom affiché"
+  },
+  "options_detecting": {
+    "message": "Détection des navigateurs…"
+  },
+  "options_browsers_found": {
+    "message": "navigateurs détectés et ajoutés"
+  },
+  "options_no_browsers_found": {
+    "message": "Aucun navigateur détecté automatiquement. Veuillez en ajouter un manuellement."
+  },
+  "options_no_browsers_yet": {
+    "message": "Aucun navigateur ajouté"
+  },
+  "options_no_rules_yet": {
+    "message": "Aucune règle. Choisissez un modèle ou créez le vôtre."
+  },
+  "options_fill_all_fields": {
+    "message": "Veuillez remplir tous les champs."
+  },
+  "options_add_browser_first": {
+    "message": "Veuillez d'abord ajouter un navigateur."
+  },
+  "options_detect_browsers": {
+    "message": "Détecter automatiquement"
+  },
+  "options_pattern_placeholder": {
+    "message": "ex. meet.google.com"
+  },
+  "options_open_in": {
+    "message": "Ouvrir dans :"
+  },
+  "setup_title": {
+    "message": "Bienvenue sur LinkLane"
+  },
+  "setup_subtitle": {
+    "message": "Suivez ces trois étapes pour commencer :"
+  },
+  "setup_step1": {
+    "message": "Installer l'hôte natif"
+  },
+  "setup_step1_desc": {
+    "message": "Un petit script permettant la communication entre Firefox et le navigateur cible."
+  },
+  "setup_step2": {
+    "message": "Ajouter vos navigateurs"
+  },
+  "setup_step2_desc": {
+    "message": "Ajoutez les navigateurs vers lesquels vous souhaitez rediriger les URLs."
+  },
+  "setup_step3": {
+    "message": "Créer des règles"
+  },
+  "setup_step3_desc": {
+    "message": "Utilisez les modèles pour Meet, Zoom, Teams ou définissez vos propres règles."
+  },
+  "setup_check": {
+    "message": "Vérifier la connexion"
+  },
+  "setup_checking": {
+    "message": "Vérification en cours…"
+  },
+  "setup_connected": {
+    "message": "Connecté !"
+  },
+  "setup_not_connected": {
+    "message": "Non connecté. Veuillez d'abord installer l'hôte natif.",
+    "options_deleted": {
+      "message": "✓ Supprimé"
+    }
+  },
+  "options_deleted": {
+    "message": "✓ Supprimé"
+  },
+  "options_pattern_hint": {
+    "message": "Joker : {0} | Exact : {1} | Domaine personnalisé : {2}"
+  },
+  "popup_checking_host": {
+    "message": "Vérification en cours…"
+  },
+  "popup_host_connected": {
+    "message": "Hôte natif connecté"
+  },
+  "popup_host_not_found": {
+    "message": "Hôte natif introuvable"
+  },
+  "popup_btn_on": {
+    "message": "ON"
+  },
+  "popup_btn_off": {
+    "message": "OFF"
+  },
+  "options_language_title": {
+    "message": "Langue"
+  },
+  "options_language_auto": {
+    "message": "Automatique (langue du système)"
+  },
+  "options_open_mode": {
+    "message": "Ouvrir en tant que"
+  },
+  "options_open_mode_tab": {
+    "message": "Nouvel onglet"
+  },
+  "options_open_mode_window": {
+    "message": "Nouvelle fenêtre"
+  },
+  "options_tab_only": {
+    "message": "Onglet uniquement"
+  },
+  "options_save_custom_preset": {
+    "message": "+ Enregistrer comme modèle"
+  },
+  "options_no_presets_in_category": {
+    "message": "Aucun modèle dans cette catégorie."
+  },
+  "options_no_presets_yet": {
+    "message": "Aucun modèle pour l'instant. Ajoutez une règle pour commencer."
+  },
+  "options_rule_name": {
+    "message": "Nom"
+  },
+  "options_cat_all": {
+    "message": "Tous"
+  },
+  "options_cat_video": {
+    "message": "Vidéo"
+  },
+  "options_cat_collab": {
+    "message": "Collaboration"
+  },
+  "options_cat_pm": {
+    "message": "Projets"
+  },
+  "options_cat_dev": {
+    "message": "Développement"
+  },
+  "options_cat_comm": {
+    "message": "Communication"
+  },
+  "options_cat_custom": {
+    "message": "Personnalisés"
+  },
+  "help_title": {
+    "message": "Aide & Astuces"
+  },
+  "help_patterns_title": {
+    "message": "Comprendre les modèles d'URL"
+  },
+  "help_install_title": {
+    "message": "Installer l'hôte natif"
+  },
+  "help_faq_title": {
+    "message": "Dépannage"
+  },
+  "help_patterns_p1": {
+    "message": "Les modèles sont comparés à l'URL complète. Utilisez <code>*</code> comme joker pour n'importe quelle séquence de caractères."
+  },
+  "help_col_pattern": {
+    "message": "Modèle"
+  },
+  "help_col_matches": {
+    "message": "Correspond à"
+  },
+  "help_ex_meet": {
+    "message": "Tous les appels Google Meet"
+  },
+  "help_ex_zoom": {
+    "message": "Toutes les réunions Zoom (n'importe quel sous-domaine)"
+  },
+  "help_ex_teams": {
+    "message": "Uniquement les liens de réunion Teams"
+  },
+  "help_ex_jira": {
+    "message": "Jira de votre entreprise (domaine exact)"
+  },
+  "help_ex_wildcard": {
+    "message": "Tous les sous-domaines de votre entreprise"
+  },
+  "help_patterns_note": {
+    "message": "Les modèles sont insensibles à la casse et recherchés dans l'URL complète, donc <code>zoom.us/j/</code> correspond à <code>https://zoom.us/j/123456789</code>."
+  },
+  "help_install_p1": {
+    "message": "L'hôte natif est un petit script Python 3 qui reçoit les URLs de l'extension et les ouvre dans le navigateur configuré. Il doit être installé une fois par machine."
+  },
+  "help_install_note": {
+    "message": "Python 3.6+ requis. Télécharger depuis"
+  },
+  "help_faq_1_q": {
+    "message": "L'URL n'est pas redirigée"
+  },
+  "help_faq_1_a": {
+    "message": "Vérifiez que la règle est activée et que le modèle correspond à votre lien."
+  },
+  "help_faq_2_q": {
+    "message": "Hôte natif introuvable"
+  },
+  "help_faq_2_a": {
+    "message": "Exécutez le script d'installation pour votre système, rechargez la page et cliquez sur « Vérifier la connexion »."
+  },
+  "help_faq_3_q": {
+    "message": "Le navigateur ne s'ouvre pas"
+  },
+  "help_faq_3_a": {
+    "message": "Vérifiez le chemin de l'exécutable. Utilisez la détection automatique ou saisissez le chemin manuellement, ex."
+  },
+  "help_faq_4_q": {
+    "message": "L'extension ne fait rien après l'installation"
+  },
+  "help_faq_4_a": {
+    "message": "Le manifeste de l'hôte doit se trouver dans (Linux/macOS) ou dans le registre (Windows). Les scripts d'installation gèrent cela automatiquement."
+  }
+}

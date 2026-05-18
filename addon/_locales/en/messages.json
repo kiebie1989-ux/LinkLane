@@ -1,0 +1,281 @@
+{
+  "description": {
+    "message": "Automatically open URLs in the right browser. Set up rules for video calls, work tools, and more."
+  },
+  "popup_status_active": {
+    "message": "Active"
+  },
+  "popup_status_inactive": {
+    "message": "Inactive"
+  },
+  "popup_rules": {
+    "message": "active rules"
+  },
+  "popup_open_settings": {
+    "message": "Open Settings"
+  },
+  "options_title": {
+    "message": "LinkLane – Settings"
+  },
+  "options_rules_title": {
+    "message": "URL Rules"
+  },
+  "options_rules_subtitle": {
+    "message": "Define which URLs open in which browser"
+  },
+  "options_add_rule": {
+    "message": "Add Rule"
+  },
+  "options_pattern": {
+    "message": "URL Pattern"
+  },
+  "options_browser": {
+    "message": "Browser"
+  },
+  "options_enabled": {
+    "message": "Enabled"
+  },
+  "options_delete": {
+    "message": "Remove"
+  },
+  "options_cancel": {
+    "message": "Cancel"
+  },
+  "options_save": {
+    "message": "Add"
+  },
+  "options_saved": {
+    "message": "✓ Saved"
+  },
+  "options_presets_title": {
+    "message": "Presets"
+  },
+  "options_presets_subtitle": {
+    "message": "Click to quickly add a rule"
+  },
+  "options_browser_path": {
+    "message": "Executable path"
+  },
+  "options_browsers_title": {
+    "message": "Browsers"
+  },
+  "options_browsers_subtitle": {
+    "message": "Target browsers for URL routing"
+  },
+  "options_add_browser": {
+    "message": "Add Browser"
+  },
+  "options_browser_name": {
+    "message": "Display name"
+  },
+  "options_detecting": {
+    "message": "Detecting browsers…"
+  },
+  "options_browsers_found": {
+    "message": "browsers detected and added"
+  },
+  "options_no_browsers_found": {
+    "message": "No browsers detected automatically. Please add one manually."
+  },
+  "options_no_browsers_yet": {
+    "message": "No browsers added yet"
+  },
+  "options_no_rules_yet": {
+    "message": "No rules yet. Pick a preset or create your own."
+  },
+  "options_fill_all_fields": {
+    "message": "Please fill in all fields."
+  },
+  "options_add_browser_first": {
+    "message": "Please add a browser first."
+  },
+  "options_detect_browsers": {
+    "message": "Auto-detect browsers"
+  },
+  "options_pattern_placeholder": {
+    "message": "e.g. meet.google.com"
+  },
+  "options_open_in": {
+    "message": "Open in:"
+  },
+  "setup_title": {
+    "message": "Welcome to LinkLane"
+  },
+  "setup_subtitle": {
+    "message": "Follow these three steps to get started:"
+  },
+  "setup_step1": {
+    "message": "Install the native host"
+  },
+  "setup_step1_desc": {
+    "message": "A small script that enables communication between Firefox and the target browser."
+  },
+  "setup_step2": {
+    "message": "Add your browsers"
+  },
+  "setup_step2_desc": {
+    "message": "Add the browsers you want URLs to be routed to."
+  },
+  "setup_step3": {
+    "message": "Create rules"
+  },
+  "setup_step3_desc": {
+    "message": "Use presets for Meet, Zoom, Teams or define your own URL patterns."
+  },
+  "setup_check": {
+    "message": "Check connection"
+  },
+  "setup_checking": {
+    "message": "Checking connection…"
+  },
+  "setup_connected": {
+    "message": "Connected!"
+  },
+  "setup_not_connected": {
+    "message": "Not connected. Please install the native host first.",
+    "options_deleted": {
+      "message": "✓ Removed"
+    }
+  },
+  "options_deleted": {
+    "message": "✓ Removed"
+  },
+  "options_pattern_hint": {
+    "message": "Wildcard: {0} | Exact: {1} | Custom domain: {2}"
+  },
+  "popup_checking_host": {
+    "message": "Checking connection…"
+  },
+  "popup_host_connected": {
+    "message": "Native host connected"
+  },
+  "popup_host_not_found": {
+    "message": "Native host not found"
+  },
+  "popup_btn_on": {
+    "message": "ON"
+  },
+  "popup_btn_off": {
+    "message": "OFF"
+  },
+  "options_language_title": {
+    "message": "Language"
+  },
+  "options_language_auto": {
+    "message": "Automatic (system language)"
+  },
+  "options_open_mode": {
+    "message": "Open as"
+  },
+  "options_open_mode_tab": {
+    "message": "New Tab"
+  },
+  "options_open_mode_window": {
+    "message": "New Window"
+  },
+  "options_tab_only": {
+    "message": "Tab only"
+  },
+  "options_save_custom_preset": {
+    "message": "+ Save as preset"
+  },
+  "options_no_presets_in_category": {
+    "message": "No presets in this category."
+  },
+  "options_no_presets_yet": {
+    "message": "No presets yet. Add a rule to get started."
+  },
+  "options_rule_name": {
+    "message": "Name"
+  },
+  "options_cat_all": {
+    "message": "All"
+  },
+  "options_cat_video": {
+    "message": "Video"
+  },
+  "options_cat_collab": {
+    "message": "Collaboration"
+  },
+  "options_cat_pm": {
+    "message": "Projects"
+  },
+  "options_cat_dev": {
+    "message": "Development"
+  },
+  "options_cat_comm": {
+    "message": "Communication"
+  },
+  "options_cat_custom": {
+    "message": "Custom"
+  },
+  "help_title": {
+    "message": "Help & Tips"
+  },
+  "help_patterns_title": {
+    "message": "Understanding URL Patterns"
+  },
+  "help_install_title": {
+    "message": "Installing the Native Host"
+  },
+  "help_faq_title": {
+    "message": "Troubleshooting"
+  },
+  "help_patterns_p1": {
+    "message": "Patterns are matched against the full URL. Use <code>*</code> as a wildcard for any sequence of characters."
+  },
+  "help_col_pattern": {
+    "message": "Pattern"
+  },
+  "help_col_matches": {
+    "message": "Matches"
+  },
+  "help_ex_meet": {
+    "message": "All Google Meet calls"
+  },
+  "help_ex_zoom": {
+    "message": "All Zoom meetings (any subdomain)"
+  },
+  "help_ex_teams": {
+    "message": "Only Teams meeting links"
+  },
+  "help_ex_jira": {
+    "message": "Your company Jira (exact domain)"
+  },
+  "help_ex_wildcard": {
+    "message": "All subdomains of your company domain"
+  },
+  "help_patterns_note": {
+    "message": "Patterns are case-insensitive and matched anywhere in the full URL, so <code>zoom.us/j/</code> matches <code>https://zoom.us/j/123456789</code>."
+  },
+  "help_install_p1": {
+    "message": "The native host is a small Python 3 script that receives URLs from the extension and opens them in the configured browser. It must be installed once per machine."
+  },
+  "help_install_note": {
+    "message": "Python 3.6+ required. Download from"
+  },
+  "help_faq_1_q": {
+    "message": "URL is not being redirected"
+  },
+  "help_faq_1_a": {
+    "message": "Check that the rule is enabled and the URL pattern matches your link."
+  },
+  "help_faq_2_q": {
+    "message": "Native host not found"
+  },
+  "help_faq_2_a": {
+    "message": "Run the install script for your OS, then reload this page and click \"Check connection\"."
+  },
+  "help_faq_3_q": {
+    "message": "Browser does not open"
+  },
+  "help_faq_3_a": {
+    "message": "Verify the executable path. Use Auto-detect or enter the full path manually, e.g."
+  },
+  "help_faq_4_q": {
+    "message": "Extension does nothing after install"
+  },
+  "help_faq_4_a": {
+    "message": "The host manifest must be in (Linux/macOS) or in the registry (Windows). The install scripts handle this automatically."
+  }
+}

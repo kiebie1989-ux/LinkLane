@@ -1,0 +1,281 @@
+{
+  "description": {
+    "message": "Opent URL's automatisch in de juiste browser. Stel regels in voor videogesprekken, werktoepassingen en meer."
+  },
+  "popup_status_active": {
+    "message": "Actief"
+  },
+  "popup_status_inactive": {
+    "message": "Inactief"
+  },
+  "popup_rules": {
+    "message": "actieve regels"
+  },
+  "popup_open_settings": {
+    "message": "Instellingen openen"
+  },
+  "options_title": {
+    "message": "LinkLane – Instellingen"
+  },
+  "options_rules_title": {
+    "message": "URL-regels"
+  },
+  "options_rules_subtitle": {
+    "message": "Bepaal welke URL's in welke browser worden geopend"
+  },
+  "options_add_rule": {
+    "message": "Regel toevoegen"
+  },
+  "options_pattern": {
+    "message": "URL-patroon"
+  },
+  "options_browser": {
+    "message": "Browser"
+  },
+  "options_enabled": {
+    "message": "Actief"
+  },
+  "options_delete": {
+    "message": "Verwijderen"
+  },
+  "options_cancel": {
+    "message": "Annuleren"
+  },
+  "options_save": {
+    "message": "Toevoegen"
+  },
+  "options_saved": {
+    "message": "✓ Opgeslagen"
+  },
+  "options_presets_title": {
+    "message": "Sjablonen"
+  },
+  "options_presets_subtitle": {
+    "message": "Klik om snel toe te voegen"
+  },
+  "options_browser_path": {
+    "message": "Pad naar uitvoerbaar bestand"
+  },
+  "options_browsers_title": {
+    "message": "Browsers"
+  },
+  "options_browsers_subtitle": {
+    "message": "Doelbrowsers voor URL-doorstuur"
+  },
+  "options_add_browser": {
+    "message": "Browser toevoegen"
+  },
+  "options_browser_name": {
+    "message": "Weergavenaam"
+  },
+  "options_detecting": {
+    "message": "Browsers worden gedetecteerd…"
+  },
+  "options_browsers_found": {
+    "message": "browsers gedetecteerd en toegevoegd"
+  },
+  "options_no_browsers_found": {
+    "message": "Geen browsers automatisch gedetecteerd. Voeg er handmatig een toe."
+  },
+  "options_no_browsers_yet": {
+    "message": "Nog geen browsers toegevoegd"
+  },
+  "options_no_rules_yet": {
+    "message": "Nog geen regels. Kies een sjabloon of maak je eigen regel."
+  },
+  "options_fill_all_fields": {
+    "message": "Vul alle velden in."
+  },
+  "options_add_browser_first": {
+    "message": "Voeg eerst een browser toe."
+  },
+  "options_detect_browsers": {
+    "message": "Browsers automatisch detecteren"
+  },
+  "options_pattern_placeholder": {
+    "message": "bijv. meet.google.com"
+  },
+  "options_open_in": {
+    "message": "Openen in:"
+  },
+  "setup_title": {
+    "message": "Welkom bij LinkLane"
+  },
+  "setup_subtitle": {
+    "message": "Volg deze drie stappen om te beginnen:"
+  },
+  "setup_step1": {
+    "message": "Installeer de native host"
+  },
+  "setup_step1_desc": {
+    "message": "Een klein script dat communicatie mogelijk maakt tussen Firefox en de doelbrowser."
+  },
+  "setup_step2": {
+    "message": "Voeg browsers toe"
+  },
+  "setup_step2_desc": {
+    "message": "Voeg de browsers toe waarnaar URL's moeten worden doorgestuurd."
+  },
+  "setup_step3": {
+    "message": "Maak regels aan"
+  },
+  "setup_step3_desc": {
+    "message": "Gebruik sjablonen voor Meet, Zoom, Teams of definieer je eigen URL-patronen."
+  },
+  "setup_check": {
+    "message": "Verbinding controleren"
+  },
+  "setup_checking": {
+    "message": "Verbinding wordt gecontroleerd…"
+  },
+  "setup_connected": {
+    "message": "Verbonden!"
+  },
+  "setup_not_connected": {
+    "message": "Niet verbonden. Installeer eerst de native host.",
+    "options_deleted": {
+      "message": "✓ Verwijderd"
+    }
+  },
+  "options_deleted": {
+    "message": "✓ Verwijderd"
+  },
+  "options_pattern_hint": {
+    "message": "Joker: {0} | Exact: {1} | Eigen domein: {2}"
+  },
+  "popup_checking_host": {
+    "message": "Verbinding wordt gecontroleerd…"
+  },
+  "popup_host_connected": {
+    "message": "Native host verbonden"
+  },
+  "popup_host_not_found": {
+    "message": "Native host niet gevonden"
+  },
+  "popup_btn_on": {
+    "message": "AAN"
+  },
+  "popup_btn_off": {
+    "message": "UIT"
+  },
+  "options_language_title": {
+    "message": "Taal"
+  },
+  "options_language_auto": {
+    "message": "Automatisch (systeemtaal)"
+  },
+  "options_open_mode": {
+    "message": "Openen als"
+  },
+  "options_open_mode_tab": {
+    "message": "Nieuw tabblad"
+  },
+  "options_open_mode_window": {
+    "message": "Nieuw venster"
+  },
+  "options_tab_only": {
+    "message": "Alleen tabblad"
+  },
+  "options_save_custom_preset": {
+    "message": "+ Opslaan als sjabloon"
+  },
+  "options_no_presets_in_category": {
+    "message": "Geen sjablonen in deze categorie."
+  },
+  "options_no_presets_yet": {
+    "message": "Nog geen sjablonen. Voeg een regel toe om te beginnen."
+  },
+  "options_rule_name": {
+    "message": "Naam"
+  },
+  "options_cat_all": {
+    "message": "Alle"
+  },
+  "options_cat_video": {
+    "message": "Video"
+  },
+  "options_cat_collab": {
+    "message": "Samenwerking"
+  },
+  "options_cat_pm": {
+    "message": "Projecten"
+  },
+  "options_cat_dev": {
+    "message": "Ontwikkeling"
+  },
+  "options_cat_comm": {
+    "message": "Communicatie"
+  },
+  "options_cat_custom": {
+    "message": "Eigen"
+  },
+  "help_title": {
+    "message": "Hulp & Tips"
+  },
+  "help_patterns_title": {
+    "message": "URL-patronen begrijpen"
+  },
+  "help_install_title": {
+    "message": "Native host installeren"
+  },
+  "help_faq_title": {
+    "message": "Problemen oplossen"
+  },
+  "help_patterns_p1": {
+    "message": "Patronen worden vergeleken met de volledige URL. Gebruik <code>*</code> als joker voor elke reeks tekens."
+  },
+  "help_col_pattern": {
+    "message": "Patroon"
+  },
+  "help_col_matches": {
+    "message": "Komt overeen met"
+  },
+  "help_ex_meet": {
+    "message": "Alle Google Meet-gesprekken"
+  },
+  "help_ex_zoom": {
+    "message": "Alle Zoom-vergaderingen (elk subdomein)"
+  },
+  "help_ex_teams": {
+    "message": "Alleen Teams-vergaderlinks"
+  },
+  "help_ex_jira": {
+    "message": "Jira van je bedrijf (exact domein)"
+  },
+  "help_ex_wildcard": {
+    "message": "Alle subdomeinen van je bedrijfsdomein"
+  },
+  "help_patterns_note": {
+    "message": "Patronen zijn hoofdletterongevoelig en worden vergeleken met de volledige URL, dus <code>zoom.us/j/</code> komt overeen met <code>https://zoom.us/j/123456789</code>."
+  },
+  "help_install_p1": {
+    "message": "De native host is een klein Python 3-script dat URL's van de extensie ontvangt en opent in de geconfigureerde browser. Eenmalig per apparaat installeren."
+  },
+  "help_install_note": {
+    "message": "Python 3.6+ vereist. Downloaden via"
+  },
+  "help_faq_1_q": {
+    "message": "URL wordt niet doorgestuurd"
+  },
+  "help_faq_1_a": {
+    "message": "Controleer of de regel is ingeschakeld en het URL-patroon overeenkomt met je link."
+  },
+  "help_faq_2_q": {
+    "message": "Native host niet gevonden"
+  },
+  "help_faq_2_a": {
+    "message": "Voer het installatiescript uit voor jouw OS, herlaad deze pagina en klik op \"Verbinding controleren\"."
+  },
+  "help_faq_3_q": {
+    "message": "Browser opent niet"
+  },
+  "help_faq_3_a": {
+    "message": "Controleer het pad naar het uitvoerbare bestand. Gebruik Auto-detecteren of voer het pad handmatig in, bijv."
+  },
+  "help_faq_4_q": {
+    "message": "Extensie doet niets na installatie"
+  },
+  "help_faq_4_a": {
+    "message": "Het host-manifest moet in (Linux/macOS) of in het register (Windows) staan. De installatiescripts regelen dit automatisch."
+  }
+}

@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>LinkLane Settings</title>
+  <link rel="icon" href="icons/icon48.png">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: #1a1a2e;
+      color: #e0e0e0;
+      min-height: 100vh;
+    }
+
+    .topbar {
+      background: linear-gradient(135deg, #16213e, #0f3460);
+      padding: 18px 32px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      border-bottom: 2px solid #e94560;
+    }
+
+    .topbar-logo {
+      font-size: 28px;
+    }
+
+    .topbar-title {
+      font-size: 22px;
+      font-weight: 700;
+      color: #e94560;
+      letter-spacing: 1px;
+    }
+
+    .topbar-subtitle {
+      font-size: 13px;
+      color: #aaa;
+      margin-left: auto;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 32px 24px;
+    }
+
+    .setup-banner {
+      background: #0f3460;
+      border: 1px solid #e94560;
+      border-radius: 10px;
+      padding: 20px 24px;
+      margin-bottom: 32px;
+      display: none;
+    }
+
+    .setup-banner.visible {
+      display: block;
+    }
+
+    .setup-banner h2 {
+      color: #e94560;
+      margin-bottom: 12px;
+      font-size: 16px;
+    }
+
+    .setup-steps {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-bottom: 16px;
+    }
+
+    .setup-step {
+      background: #16213e;
+      border-radius: 8px;
+      padding: 12px 16px;
+      flex: 1;
+      min-width: 180px;
+    }
+
+    .setup-step .num {
+      background: #e94560;
+      color: white;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .setup-step p {
+      font-size: 12px;
+      color: #aaa;
+      margin-top: 4px;
+    }
+
+    .setup-step code {
+      background: #0a0a1a;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-size: 11px;
+      color: #e94560;
+    }
+
+    .host-check {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .host-check-result {
+      font-size: 13px;
+    }
+
+    .ok {
+      color: #4caf50;
+    }
+
+    .err {
+      color: #e94560;
+    }
+
+    .section {
+      background: #16213e;
+      border-radius: 10px;
+      padding: 24px;
+      margin-bottom: 24px;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .section-title {
+      font-size: 16px;
+      font-weight: 700;
+      color: #e0e0e0;
+    }
+
+    .section-subtitle {
+      font-size: 12px;
+      color: #aaa;
+      margin-top: 2px;
+    }
+
+    .section-header-btns {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      padding: 8px 16px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 13px;
+      font-weight: 600;
+      transition: all .2s;
+    }
+
+    .btn-primary {
+      background: #e94560;
+      color: white;
+    }
+
+    .btn-primary:hover {
+      background: #c73652;
+    }
+
+    .btn-secondary {
+      background: #0f3460;
+      color: #e0e0e0;
+    }
+
+    .btn-secondary:hover {
+      background: #1a4a80;
+    }
+
+    .btn-danger {
+      background: transparent;
+      color: #e94560;
+      border: 1px solid #e94560;
+      padding: 4px 10px;
+      font-size: 12px;
+    }
+
+    .btn-danger:hover {
+      background: #e94560;
+      color: white;
+    }
+
+    .btn-sm {
+      padding: 5px 10px;
+      font-size: 12px;
+    }
+
+    .presets-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+
+    .preset-chip {
+      background: #0f3460;
+      border: 1px solid #1a4a80;
+      border-radius: 20px;
+      padding: 6px 14px;
+      font-size: 12px;
+      cursor: pointer;
+      transition: all .2s;
+    }
+
+    .preset-chip:hover {
+      background: #1a4a80;
+      border-color: #e94560;
+    }
+
+    .preset-chip.added {
+      border-color: #4caf50;
+      color: #4caf50;
+    }
+
+    .rules-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .rules-table th {
+      text-align: left;
+      font-size: 11px;
+      text-transform: uppercase;
+      color: #aaa;
+      padding: 8px 12px;
+      border-bottom: 1px solid #0f3460;
+    }
+
+    .rules-table td {
+      padding: 10px 12px;
+      border-bottom: 1px solid #0f3460;
+      font-size: 13px;
+    }
+
+    .rules-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    .rules-table tr:hover td {
+      background: #1e2a4a;
+    }
+
+    .pattern-badge {
+      background: #0f3460;
+      padding: 3px 8px;
+      border-radius: 4px;
+      font-family: monospace;
+      font-size: 12px;
+      color: #7eb8f7;
+    }
+
+    .browser-badge {
+      background: #1a3a1a;
+      padding: 3px 8px;
+      border-radius: 4px;
+      font-size: 12px;
+      color: #4caf50;
+    }
+
+    .add-rule-form {
+      background: #0f3460;
+      border-radius: 8px;
+      padding: 16px;
+      margin-top: 16px;
+      display: none;
+    }
+
+    .add-rule-form.visible {
+      display: block;
+    }
+
+    .form-row {
+      display: flex;
+      gap: 12px;
+      align-items: flex-end;
+      flex-wrap: wrap;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      flex: 1;
+      min-width: 160px;
+    }
+
+    .form-group label {
+      font-size: 11px;
+      color: #aaa;
+      text-transform: uppercase;
+    }
+
+    .form-group input,
+    .form-group select {
+      background: #16213e;
+      border: 1px solid #1a4a80;
+      border-radius: 6px;
+      padding: 8px 10px;
+      color: #e0e0e0;
+      font-size: 13px;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus {
+      outline: none;
+      border-color: #e94560;
+    }
+
+    .form-group select option {
+      background: #16213e;
+    }
+
+    .toggle {
+      position: relative;
+      display: inline-block;
+      width: 52px;
+      height: 28px;
+    }
+
+    .toggle input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+
+    .slider {
+      position: absolute;
+      cursor: pointer;
+      inset: 0;
+      background: #2a2a2a;
+      border-radius: 28px;
+      transition: background .25s;
+      border: 1px solid #555;
+    }
+
+    .slider:before {
+      content: "";
+      position: absolute;
+      width: 22px;
+      height: 22px;
+      left: 2px;
+      bottom: 2px;
+      background: #666;
+      border-radius: 50%;
+      transition: transform .25s, background .25s;
+    }
+
+    input:checked+.slider {
+      background: #1a4a2a;
+      border-color: #4caf50;
+    }
+
+    input:checked+.slider:before {
+      transform: translateX(24px);
+      background: #4caf50;
+    }
+
+    .empty-state {
+      text-align: center;
+      padding: 32px;
+      color: #aaa;
+      font-size: 13px;
+    }
+
+    .empty-state .icon {
+      font-size: 32px;
+      margin-bottom: 8px;
+    }
+
+    .save-notice {
+      background: #1a3a1a;
+      color: #4caf50;
+      padding: 10px 16px;
+      border-radius: 6px;
+      font-size: 13px;
+      display: none;
+      margin-top: 12px;
+    }
+
+    .save-notice.visible {
+      display: block;
+    }
+
+    .detect-status {
+      font-size: 12px;
+      color: #aaa;
+      margin-top: 8px;
+      min-height: 18px;
+    }
+
+    details.info-accordion {
+      background: #0f3460;
+      border-radius: 8px;
+      margin-bottom: 8px;
+      overflow: hidden;
+    }
+
+    details.info-accordion summary {
+      padding: 12px 16px;
+      cursor: pointer;
+      font-size: 13px;
+      font-weight: 600;
+      color: #e0e0e0;
+      list-style: none;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      user-select: none;
+    }
+
+    details.info-accordion summary::-webkit-details-marker {
+      display: none;
+    }
+
+    details.info-accordion summary::before {
+      content: "▶";
+      font-size: 10px;
+      color: #e94560;
+      transition: transform .2s;
+      display: inline-block;
+      min-width: 12px;
+    }
+
+    details[open].info-accordion summary::before {
+      transform: rotate(90deg);
+    }
+
+    details.info-accordion summary:hover {
+      background: #1a4a80;
+    }
+
+    details.info-accordion .accordion-body {
+      padding: 4px 16px 16px 38px;
+      font-size: 13px;
+      color: #c0c0c0;
+      line-height: 1.6;
+    }
+
+    details.info-accordion .accordion-body code {
+      background: #0a0a1a;
+      padding: 2px 6px;
+      border-radius: 4px;
+      color: #e94560;
+      font-size: 12px;
+    }
+
+    details.info-accordion .accordion-body table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 8px;
+    }
+
+    details.info-accordion .accordion-body th {
+      text-align: left;
+      font-size: 11px;
+      color: #aaa;
+      text-transform: uppercase;
+      padding: 6px 8px;
+      border-bottom: 1px solid #1a4a80;
+    }
+
+    details.info-accordion .accordion-body td {
+      padding: 6px 8px;
+      border-bottom: 1px solid #16213e;
+      font-size: 12px;
+    }
+
+    details.info-accordion .accordion-body td:first-child {
+      font-family: monospace;
+      color: #7eb8f7;
+    }
+
+    details.info-accordion .accordion-body p+p {
+      margin-top: 8px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="topbar">
+    <div class="topbar-logo">🔀</div>
+    <div class="topbar-title">LinkLane</div>
+    <div class="topbar-subtitle" data-i18n="description">Open URLs in the right browser</div>
+  </div>
+
+  <div class="container">
+
+    <!-- Setup Banner -->
+    <div class="setup-banner" id="setupBanner">
+      <h2>🚀 <span data-i18n="setup_title">Setup required</span></h2>
+      <div class="setup-steps">
+        <div class="setup-step">
+          <div class="num">1</div>
+          <strong data-i18n="setup_step1">Install native host</strong>
+          <p data-i18n="setup_step1_desc">A small script that enables communication between Firefox and the target
+            browser.</p>
+          <p style="margin-top:6px">Linux: <code>bash install_linux.sh</code></p>
+          <p style="margin-top:4px">Windows: <code>install_windows.bat</code></p>
+          <p style="margin-top:4px">macOS: <code>bash install_macos.sh</code></p>
+        </div>
+        <div class="setup-step">
+          <div class="num">2</div>
+          <strong data-i18n="setup_step2">Add your browsers</strong>
+          <p data-i18n="setup_step2_desc">Add the browsers you want URLs to be routed to.</p>
+        </div>
+        <div class="setup-step">
+          <div class="num">3</div>
+          <strong data-i18n="setup_step3">Configure rules</strong>
+          <p data-i18n="setup_step3_desc">Use presets for Meet, Zoom, Teams or define your own URL patterns.</p>
+        </div>
+      </div>
+      <div class="host-check">
+        <button class="btn btn-secondary btn-sm" id="checkHost" data-i18n="setup_check">Check connection</button>
+        <span class="host-check-result" id="hostCheckResult"></span>
+      </div>
+    </div>
+
+    <!-- Browsers Section -->
+    <div class="section">
+      <div class="section-header">
+        <div>
+          <div class="section-title" data-i18n="options_browsers_title">Browsers</div>
+          <div class="section-subtitle" data-i18n="options_no_browsers_yet"><span
+              data-i18n="options_browsers_subtitle">Add browsers to route URLs to</span></div>
+        </div>
+        <div class="section-header-btns">
+          <button class="btn btn-secondary" id="detectBrowsersBtn" data-i18n="options_detect_browsers">Auto-detect
+            browsers</button>
+          <button class="btn btn-primary" id="showAddBrowser">+ <span data-i18n="options_add_browser">Add
+              Browser</span></button>
+        </div>
+      </div>
+      <div id="browsersList"></div>
+      <div class="detect-status" id="detectStatus"></div>
+      <div class="add-rule-form" id="addBrowserForm">
+        <div class="form-row">
+          <div class="form-group">
+            <label data-i18n="options_browser_name">Browser Name</label>
+            <input type="text" id="newBrowserName" placeholder="z.B. Chromium">
+          </div>
+          <div class="form-group">
+            <label data-i18n="options_browser_path">Path</label>
+            <input type="text" id="newBrowserPath" placeholder="/usr/bin/chromium-browser">
+          </div>
+          <div class="form-group" style="flex:0">
+            <label>&nbsp;</label>
+            <div style="display:flex;gap:8px">
+              <button class="btn btn-primary" id="saveBrowser" data-i18n="options_add_browser">Add</button>
+              <button class="btn btn-secondary" id="cancelBrowser" data-i18n="options_cancel">Abbrechen</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Rules Section -->
+    <div class="section">
+      <div class="section-header">
+        <div>
+          <div class="section-title" data-i18n="options_rules_title">URL Rules</div>
+          <div class="section-subtitle"><span data-i18n="options_rules_subtitle">Define which URLs open in which
+              browser</span></div>
+        </div>
+        <button class="btn btn-primary" id="showAddRule">+ <span data-i18n="options_add_rule">Add Rule</span></button>
+      </div>
+      <div style="margin-bottom:16px">
+        <div style="font-size:12px;color:#aaa;margin-bottom:6px">⚡ <span
+            data-i18n="options_presets_title">Presets</span>:</div>
+        <div class="presets-grid" id="presetsGrid"></div>
+      </div>
+      <div id="rulesContainer"></div>
+      <div class="add-rule-form" id="addRuleForm">
+        <div class="form-row">
+          <div class="form-group" style="flex:0.6">
+            <label data-i18n="options_rule_name">Name</label>
+            <input type="text" id="newRuleName" placeholder="z.B. Google Meet">
+          </div>
+          <div class="form-group">
+            <label data-i18n="options_pattern">URL Pattern</label>
+            <input type="text" id="newPattern" data-i18n-ph="options_pattern_placeholder"
+              placeholder="e.g. meet.google.com">
+          </div>
+          <div class="form-group" style="flex:0.5">
+            <label data-i18n="options_browser">Browser</label>
+            <select id="newBrowserSelect"></select>
+          </div>
+          <div class="form-group" style="flex:0.5">
+            <label data-i18n="options_open_mode">Open as</label>
+            <select id="newOpenMode">
+              <option value="tab" data-i18n="options_open_mode_tab">New Tab</option>
+              <option value="window" data-i18n="options_open_mode_window">New Window</option>
+            </select>
+          </div>
+          <div class="form-group" style="flex:0">
+            <label>&nbsp;</label>
+            <div style="display:flex;gap:8px">
+              <button class="btn btn-primary" id="saveRule" data-i18n="options_add_rule">Add</button>
+              <button class="btn btn-secondary" id="cancelRule" data-i18n="options_cancel">Cancel</button>
+            </div>
+          </div>
+        </div>
+        <p style="font-size:11px;color:#aaa;margin-top:10px">
+        <p id="patternHint" style="font-size:11px;color:#aaa;margin-top:10px"></p>
+        </p>
+      </div>
+      <div class="save-notice" id="saveNotice"></div>
+    </div>
+
+    <!-- Language Section -->
+    <div class="section">
+      <div class="section-header" style="margin-bottom:16px;">
+        <div class="section-title" data-i18n="options_language_title">Language</div>
+      </div>
+      <select id="langSelect"
+        style="background:#0f3460;border:1px solid #1a4a80;border-radius:6px;padding:8px 12px;color:#e0e0e0;font-size:13px;min-width:220px;cursor:pointer;">
+        <option value="auto" data-i18n="options_language_auto">Automatic (system language)</option>
+        <option value="de">Deutsch</option>
+        <option value="en">English</option>
+        <option value="es">Español</option>
+        <option value="fr">Français</option>
+        <option value="nl">Nederlands</option>
+      </select>
+      <span id="langSaveNote" style="font-size:12px;color:#4caf50;margin-left:12px;display:none;">✓</span>
+    </div>
+
+    <!-- Help Section -->
+    <div class="section">
+      <div class="section-header" style="margin-bottom:16px;">
+        <div class="section-title" data-i18n="help_title">Help &amp; Tips</div>
+      </div>
+
+      <details class="info-accordion">
+        <summary data-i18n="help_patterns_title">Understanding URL Patterns</summary>
+        <div class="accordion-body" id="help-body-patterns"></div>
+      </details>
+
+      <details class="info-accordion">
+        <summary data-i18n="help_install_title">Installing the Native Host</summary>
+        <div class="accordion-body" id="help-body-install"></div>
+      </details>
+
+      <details class="info-accordion">
+        <summary data-i18n="help_faq_title">Troubleshooting</summary>
+        <div class="accordion-body" id="help-body-faq"></div>
+      </details>
+    </div>
+
+  </div>
+  <script src="options.js"></script>
+</body>
+
+</html>

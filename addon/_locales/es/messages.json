@@ -1,0 +1,281 @@
+{
+  "description": {
+    "message": "Abre URLs automáticamente en el navegador correcto. Define reglas para videollamadas, herramientas de trabajo y más."
+  },
+  "popup_status_active": {
+    "message": "Activo"
+  },
+  "popup_status_inactive": {
+    "message": "Inactivo"
+  },
+  "popup_rules": {
+    "message": "reglas activas"
+  },
+  "popup_open_settings": {
+    "message": "Abrir ajustes"
+  },
+  "options_title": {
+    "message": "LinkLane – Ajustes"
+  },
+  "options_rules_title": {
+    "message": "Reglas URL"
+  },
+  "options_rules_subtitle": {
+    "message": "Define qué URLs se abren en qué navegador"
+  },
+  "options_add_rule": {
+    "message": "Añadir una regla"
+  },
+  "options_pattern": {
+    "message": "Patrón URL"
+  },
+  "options_browser": {
+    "message": "Navegador"
+  },
+  "options_enabled": {
+    "message": "Activo"
+  },
+  "options_delete": {
+    "message": "Eliminar"
+  },
+  "options_cancel": {
+    "message": "Cancelar"
+  },
+  "options_save": {
+    "message": "Añadir"
+  },
+  "options_saved": {
+    "message": "✓ Guardado"
+  },
+  "options_presets_title": {
+    "message": "Plantillas"
+  },
+  "options_presets_subtitle": {
+    "message": "Haz clic para añadir rápidamente"
+  },
+  "options_browser_path": {
+    "message": "Ruta del ejecutable"
+  },
+  "options_browsers_title": {
+    "message": "Navegadores"
+  },
+  "options_browsers_subtitle": {
+    "message": "Navegadores de destino para la redirección de URLs"
+  },
+  "options_add_browser": {
+    "message": "Añadir navegador"
+  },
+  "options_browser_name": {
+    "message": "Nombre visible"
+  },
+  "options_detecting": {
+    "message": "Detectando navegadores…"
+  },
+  "options_browsers_found": {
+    "message": "navegadores detectados y añadidos"
+  },
+  "options_no_browsers_found": {
+    "message": "No se detectaron navegadores automáticamente. Por favor, añade uno manualmente."
+  },
+  "options_no_browsers_yet": {
+    "message": "Aún no hay navegadores añadidos"
+  },
+  "options_no_rules_yet": {
+    "message": "Aún no hay reglas. Elige una plantilla o crea la tuya."
+  },
+  "options_fill_all_fields": {
+    "message": "Por favor, rellena todos los campos."
+  },
+  "options_add_browser_first": {
+    "message": "Por favor, añade primero un navegador."
+  },
+  "options_detect_browsers": {
+    "message": "Detectar navegadores automáticamente"
+  },
+  "options_pattern_placeholder": {
+    "message": "ej. meet.google.com"
+  },
+  "options_open_in": {
+    "message": "Abrir en:"
+  },
+  "setup_title": {
+    "message": "Bienvenido a LinkLane"
+  },
+  "setup_subtitle": {
+    "message": "Sigue estos tres pasos para empezar:"
+  },
+  "setup_step1": {
+    "message": "Instalar el host nativo"
+  },
+  "setup_step1_desc": {
+    "message": "Un pequeño script que permite la comunicación entre Firefox y el navegador destino."
+  },
+  "setup_step2": {
+    "message": "Añadir navegadores"
+  },
+  "setup_step2_desc": {
+    "message": "Añade los navegadores a los que quieres redirigir las URLs."
+  },
+  "setup_step3": {
+    "message": "Crear reglas"
+  },
+  "setup_step3_desc": {
+    "message": "Usa plantillas para Meet, Zoom, Teams o define tus propios patrones."
+  },
+  "setup_check": {
+    "message": "Verificar conexión"
+  },
+  "setup_checking": {
+    "message": "Verificando conexión…"
+  },
+  "setup_connected": {
+    "message": "¡Conectado!"
+  },
+  "setup_not_connected": {
+    "message": "Sin conexión. Por favor, instala primero el host nativo.",
+    "options_deleted": {
+      "message": "✓ Eliminado"
+    }
+  },
+  "options_deleted": {
+    "message": "✓ Eliminado"
+  },
+  "options_pattern_hint": {
+    "message": "Comodín: {0} | Exacto: {1} | Dominio propio: {2}"
+  },
+  "popup_checking_host": {
+    "message": "Verificando conexión…"
+  },
+  "popup_host_connected": {
+    "message": "Host nativo conectado"
+  },
+  "popup_host_not_found": {
+    "message": "Host nativo no encontrado"
+  },
+  "popup_btn_on": {
+    "message": "ON"
+  },
+  "popup_btn_off": {
+    "message": "OFF"
+  },
+  "options_language_title": {
+    "message": "Idioma"
+  },
+  "options_language_auto": {
+    "message": "Automático (idioma del sistema)"
+  },
+  "options_open_mode": {
+    "message": "Abrir como"
+  },
+  "options_open_mode_tab": {
+    "message": "Nueva pestaña"
+  },
+  "options_open_mode_window": {
+    "message": "Nueva ventana"
+  },
+  "options_tab_only": {
+    "message": "Solo pestaña"
+  },
+  "options_save_custom_preset": {
+    "message": "+ Guardar como plantilla"
+  },
+  "options_no_presets_in_category": {
+    "message": "No hay plantillas en esta categoría."
+  },
+  "options_no_presets_yet": {
+    "message": "A\u00fan no hay plantillas. A\u00f1ade una regla para empezar."
+  },
+  "options_rule_name": {
+    "message": "Nombre"
+  },
+  "options_cat_all": {
+    "message": "Todos"
+  },
+  "options_cat_video": {
+    "message": "Vídeo"
+  },
+  "options_cat_collab": {
+    "message": "Colaboración"
+  },
+  "options_cat_pm": {
+    "message": "Proyectos"
+  },
+  "options_cat_dev": {
+    "message": "Desarrollo"
+  },
+  "options_cat_comm": {
+    "message": "Comunicación"
+  },
+  "options_cat_custom": {
+    "message": "Propias"
+  },
+  "help_title": {
+    "message": "Ayuda y consejos"
+  },
+  "help_patterns_title": {
+    "message": "Entender los patrones URL"
+  },
+  "help_install_title": {
+    "message": "Instalar el host nativo"
+  },
+  "help_faq_title": {
+    "message": "Solución de problemas"
+  },
+  "help_patterns_p1": {
+    "message": "Los patrones se comprueban contra la URL completa. Usa <code>*</code> como comod\u00edn para cualquier secuencia de caracteres."
+  },
+  "help_col_pattern": {
+    "message": "Patr\u00f3n"
+  },
+  "help_col_matches": {
+    "message": "Coincide con"
+  },
+  "help_ex_meet": {
+    "message": "Todas las videollamadas de Google Meet"
+  },
+  "help_ex_zoom": {
+    "message": "Todas las reuniones de Zoom (cualquier subdominio)"
+  },
+  "help_ex_teams": {
+    "message": "Solo enlaces de reuniones de Teams"
+  },
+  "help_ex_jira": {
+    "message": "Jira de tu empresa (dominio exacto)"
+  },
+  "help_ex_wildcard": {
+    "message": "Todos los subdominios de tu empresa"
+  },
+  "help_patterns_note": {
+    "message": "Los patrones no distinguen may\u00fasculas y se comprueban contra la URL completa, por lo que <code>zoom.us/j/</code> coincide con <code>https://zoom.us/j/123456789</code>."
+  },
+  "help_install_p1": {
+    "message": "El host nativo es un peque\u00f1o script de Python 3 que recibe URLs de la extensi\u00f3n y las abre en el navegador configurado. Se instala una vez por equipo."
+  },
+  "help_install_note": {
+    "message": "Se requiere Python 3.6+. Desc\u00e1rgalo en"
+  },
+  "help_faq_1_q": {
+    "message": "La URL no se redirige"
+  },
+  "help_faq_1_a": {
+    "message": "Comprueba que la regla est\u00e9 activada y que el patr\u00f3n coincida con tu enlace."
+  },
+  "help_faq_2_q": {
+    "message": "Host nativo no encontrado"
+  },
+  "help_faq_2_a": {
+    "message": "Ejecuta el script de instalaci\u00f3n para tu sistema operativo, recarga la p\u00e1gina y haz clic en \"Verificar conexi\u00f3n\"."
+  },
+  "help_faq_3_q": {
+    "message": "El navegador no se abre"
+  },
+  "help_faq_3_a": {
+    "message": "Verifica la ruta del ejecutable. Usa la detecci\u00f3n autom\u00e1tica o introd\u00facela manualmente, p.\u00a0ej."
+  },
+  "help_faq_4_q": {
+    "message": "La extensi\u00f3n no hace nada tras la instalaci\u00f3n"
+  },
+  "help_faq_4_a": {
+    "message": "El manifiesto del host debe estar en (Linux/macOS) o en el registro (Windows). Los scripts de instalaci\u00f3n lo gestionan autom\u00e1ticamente."
+  }
+}

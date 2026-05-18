@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <link rel="icon" href="icons/icon48.png">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      width: 260px;
+      background: #1a1a2e;
+      color: #e0e0e0;
+    }
+    .header {
+      background: linear-gradient(135deg, #16213e, #0f3460);
+      padding: 14px 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      border-bottom: 2px solid #e94560;
+    }
+    .logo { font-size: 20px; }
+    .title { font-size: 17px; font-weight: 700; color: #e94560; letter-spacing: 1px; }
+    .body { padding: 14px; }
+
+    /* Status-Zeile mit deutlichem Button */
+    .status-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 12px;
+      background: #16213e;
+      border-radius: 8px;
+      padding: 10px 12px;
+    }
+    .status-label { font-size: 13px; font-weight: 600; }
+    .status-label.active { color: #4caf50; }
+    .status-label.inactive { color: #e94560; }
+
+    /* Klarer An/Aus Button statt unsichtbarem Toggle */
+    .toggle-btn {
+      background: #4caf50;
+      color: white;
+      border: none;
+      border-radius: 20px;
+      padding: 5px 14px;
+      font-size: 12px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background .2s;
+      letter-spacing: 0.5px;
+      min-width: 48px;
+      text-align: center;
+    }
+    .toggle-btn.off {
+      background: #555;
+      color: #aaa;
+    }
+    .toggle-btn:hover { filter: brightness(1.15); }
+
+    .rule-count {
+      background: #16213e;
+      border-radius: 8px;
+      padding: 10px 12px;
+      font-size: 12px;
+      color: #aaa;
+      margin-bottom: 12px;
+    }
+    .rule-count span { color: #e94560; font-weight: 700; font-size: 16px; }
+
+    .btn {
+      display: block; width: 100%; padding: 10px;
+      background: #e94560; color: white;
+      border: none; border-radius: 6px; cursor: pointer;
+      font-size: 13px; font-weight: 600; text-align: center;
+      transition: background .2s;
+    }
+    .btn:hover { background: #c73652; }
+
+    .host-status {
+      display: flex; align-items: center; gap: 6px;
+      font-size: 11px; color: #aaa; margin-top: 10px;
+    }
+    .dot { width: 8px; height: 8px; border-radius: 50%; background: #555; flex-shrink: 0; }
+    .dot.ok { background: #4caf50; }
+    .dot.err { background: #e94560; }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <div class="logo">🔀</div>
+    <div class="title">LinkLane</div>
+  </div>
+  <div class="body">
+    <div class="status-row">
+      <span class="status-label active" id="statusLabel"></span>
+      <button class="toggle-btn" id="toggleBtn"></button>
+    </div>
+    <div class="rule-count">
+      <span id="ruleCount">0</span> <span id="rulesLabel"></span>
+    </div>
+    <button class="btn" id="openSettings">⚙️ <span id="openSettingsLabel"></span></button>
+    <div class="host-status">
+      <div class="dot" id="hostDot"></div>
+      <span id="hostStatus"></span>
+    </div>
+  </div>
+  <script src="popup.js"></script>
+</body>
+</html>

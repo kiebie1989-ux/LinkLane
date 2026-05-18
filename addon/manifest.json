@@ -1,0 +1,43 @@
+{
+  "manifest_version": 3,
+  "name": "LinkLane",
+  "version": "1.0.0",
+  "description": "__MSG_description__",
+  "default_locale": "en",
+  "author": "LinkLane Contributors",
+  "homepage_url": "https://github.com/linklane/linklane",
+  "icons": {
+    "48": "icons/icon48.png",
+    "96": "icons/icon96.png"
+  },
+  "permissions": [
+    "tabs",
+    "storage",
+    "webRequest",
+    "webRequestBlocking",
+    "nativeMessaging"
+  ],
+  "host_permissions": [
+    "<all_urls>"
+  ],
+  "background": {
+    "scripts": [
+      "background.js"
+    ]
+  },
+  "options_ui": {
+    "page": "options.html",
+    "open_in_tab": true
+  },
+  "action": {
+    "default_icon": "icons/icon48.png",
+    "default_title": "LinkLane",
+    "default_popup": "popup.html"
+  },
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "linklane@linklane",
+      "strict_min_version": "91.0"
+    }
+  }
+}

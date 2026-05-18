@@ -1,0 +1,7 @@
+{
+  "name": "linklane_host",
+  "description": "LinkLane Native Host - Opens URLs in external browsers",
+  "path": "PLACEHOLDER",
+  "type": "stdio",
+  "allowed_extensions": ["linklane@linklane"]
+}

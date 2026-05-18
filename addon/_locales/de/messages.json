@@ -1,0 +1,281 @@
+{
+  "description": {
+    "message": "Öffnet URLs automatisch im richtigen Browser. Lege Regeln fest für Video-Calls, Arbeitstools und mehr."
+  },
+  "popup_status_active": {
+    "message": "Aktiv"
+  },
+  "popup_status_inactive": {
+    "message": "Inaktiv"
+  },
+  "popup_rules": {
+    "message": "aktive Regeln"
+  },
+  "popup_open_settings": {
+    "message": "Einstellungen öffnen"
+  },
+  "options_title": {
+    "message": "LinkLane – Einstellungen"
+  },
+  "options_rules_title": {
+    "message": "URL-Regeln"
+  },
+  "options_rules_subtitle": {
+    "message": "Bestimmt, welche URLs in welchem Browser geöffnet werden"
+  },
+  "options_add_rule": {
+    "message": "Regel hinzufügen"
+  },
+  "options_pattern": {
+    "message": "URL-Muster"
+  },
+  "options_browser": {
+    "message": "Browser"
+  },
+  "options_enabled": {
+    "message": "Aktiv"
+  },
+  "options_delete": {
+    "message": "Entfernen"
+  },
+  "options_cancel": {
+    "message": "Abbrechen"
+  },
+  "options_save": {
+    "message": "Hinzufügen"
+  },
+  "options_saved": {
+    "message": "✓ Gespeichert"
+  },
+  "options_presets_title": {
+    "message": "Vorlagen"
+  },
+  "options_presets_subtitle": {
+    "message": "Klicken zum schnellen Hinzufügen"
+  },
+  "options_browser_path": {
+    "message": "Programmpfad"
+  },
+  "options_browsers_title": {
+    "message": "Browser"
+  },
+  "options_browsers_subtitle": {
+    "message": "Zielbrowser für die URL-Weiterleitung"
+  },
+  "options_add_browser": {
+    "message": "Browser hinzufügen"
+  },
+  "options_browser_name": {
+    "message": "Anzeigename"
+  },
+  "options_detecting": {
+    "message": "Browser werden erkannt …"
+  },
+  "options_browsers_found": {
+    "message": "Browser erkannt und hinzugefügt"
+  },
+  "options_no_browsers_found": {
+    "message": "Keine Browser automatisch gefunden. Bitte manuell hinzufügen."
+  },
+  "options_no_browsers_yet": {
+    "message": "Noch keine Browser hinzugefügt"
+  },
+  "options_no_rules_yet": {
+    "message": "Noch keine Regeln vorhanden. Vorlage auswählen oder eigene Regel erstellen."
+  },
+  "options_fill_all_fields": {
+    "message": "Bitte alle Felder ausfüllen."
+  },
+  "options_add_browser_first": {
+    "message": "Bitte zuerst einen Browser hinzufügen."
+  },
+  "options_detect_browsers": {
+    "message": "Browser automatisch erkennen"
+  },
+  "options_pattern_placeholder": {
+    "message": "z. B. meet.google.com"
+  },
+  "options_open_in": {
+    "message": "Öffnen in:"
+  },
+  "setup_title": {
+    "message": "Willkommen bei LinkLane"
+  },
+  "setup_subtitle": {
+    "message": "Bitte folge diesen drei Schritten, um loszulegen:"
+  },
+  "setup_step1": {
+    "message": "Nativen Host installieren"
+  },
+  "setup_step1_desc": {
+    "message": "Lädt ein kleines Skript, das die Kommunikation zwischen Firefox und dem Zielbrowser ermöglicht."
+  },
+  "setup_step2": {
+    "message": "Browser hinzufügen"
+  },
+  "setup_step2_desc": {
+    "message": "Füge die Browser hinzu, in die URLs weitergeleitet werden sollen."
+  },
+  "setup_step3": {
+    "message": "Regeln anlegen"
+  },
+  "setup_step3_desc": {
+    "message": "Nutze Vorlagen für Meet, Zoom, Teams oder lege eigene URL-Muster fest."
+  },
+  "setup_check": {
+    "message": "Verbindung prüfen"
+  },
+  "setup_checking": {
+    "message": "Verbindung wird geprüft …"
+  },
+  "setup_connected": {
+    "message": "Verbunden!"
+  },
+  "setup_not_connected": {
+    "message": "Keine Verbindung. Bitte zuerst den nativen Host installieren.",
+    "options_deleted": {
+      "message": "✓ Entfernt"
+    }
+  },
+  "options_deleted": {
+    "message": "✓ Entfernt"
+  },
+  "options_pattern_hint": {
+    "message": "Platzhalter: {0} | Exakt: {1} | Eigene Domain: {2}"
+  },
+  "popup_checking_host": {
+    "message": "Verbindung wird geprüft …"
+  },
+  "popup_host_connected": {
+    "message": "Nativer Host verbunden"
+  },
+  "popup_host_not_found": {
+    "message": "Nativer Host nicht gefunden"
+  },
+  "popup_btn_on": {
+    "message": "AN"
+  },
+  "popup_btn_off": {
+    "message": "AUS"
+  },
+  "options_language_title": {
+    "message": "Sprache"
+  },
+  "options_language_auto": {
+    "message": "Automatisch (Systemsprache)"
+  },
+  "options_open_mode": {
+    "message": "\u00d6ffnen als"
+  },
+  "options_open_mode_tab": {
+    "message": "Neuer Tab"
+  },
+  "options_open_mode_window": {
+    "message": "Neues Fenster"
+  },
+  "options_tab_only": {
+    "message": "Nur Tab"
+  },
+  "options_save_custom_preset": {
+    "message": "+ Vorlage speichern"
+  },
+  "options_no_presets_in_category": {
+    "message": "Keine Vorlagen in dieser Kategorie."
+  },
+  "options_no_presets_yet": {
+    "message": "Noch keine Vorlagen. F\u00fcge eine Regel hinzu, um zu starten."
+  },
+  "options_rule_name": {
+    "message": "Name"
+  },
+  "options_cat_all": {
+    "message": "Alle"
+  },
+  "options_cat_video": {
+    "message": "Video"
+  },
+  "options_cat_collab": {
+    "message": "Zusammenarbeit"
+  },
+  "options_cat_pm": {
+    "message": "Projekte"
+  },
+  "options_cat_dev": {
+    "message": "Entwicklung"
+  },
+  "options_cat_comm": {
+    "message": "Kommunikation"
+  },
+  "options_cat_custom": {
+    "message": "Eigene"
+  },
+  "help_title": {
+    "message": "Hilfe & Hinweise"
+  },
+  "help_patterns_title": {
+    "message": "URL-Muster verstehen"
+  },
+  "help_install_title": {
+    "message": "Nativen Host installieren"
+  },
+  "help_faq_title": {
+    "message": "Fehlerbehebung"
+  },
+  "help_patterns_p1": {
+    "message": "Muster werden mit der vollst\u00e4ndigen URL abgeglichen. <code>*</code> steht als Platzhalter f\u00fcr eine beliebige Zeichenfolge."
+  },
+  "help_col_pattern": {
+    "message": "Muster"
+  },
+  "help_col_matches": {
+    "message": "Trifft zu auf"
+  },
+  "help_ex_meet": {
+    "message": "Alle Google-Meet-Anrufe"
+  },
+  "help_ex_zoom": {
+    "message": "Alle Zoom-Meetings (jede Subdomain)"
+  },
+  "help_ex_teams": {
+    "message": "Nur Teams-Meeting-Links"
+  },
+  "help_ex_jira": {
+    "message": "Firmen-eigenes Jira (exakte Domain)"
+  },
+  "help_ex_wildcard": {
+    "message": "Alle Subdomains der Firmendomain"
+  },
+  "help_patterns_note": {
+    "message": "Muster sind nicht case-sensitiv. Ein Muster wird gegen die vollst\u00e4ndige URL gepr\u00fcft, d.\u00a0h. <code>zoom.us/j/</code> trifft auf <code>https://zoom.us/j/123456789</code> zu."
+  },
+  "help_install_p1": {
+    "message": "Der native Host ist ein kleines Python-3-Skript, das URLs von der Erweiterung empf\u00e4ngt und im konfigurierten Browser \u00f6ffnet. Muss einmalig pro Ger\u00e4t installiert werden."
+  },
+  "help_install_note": {
+    "message": "Python 3.6+ erforderlich. Download unter"
+  },
+  "help_faq_1_q": {
+    "message": "URL wird nicht weitergeleitet"
+  },
+  "help_faq_1_a": {
+    "message": "Pr\u00fcfe, ob die Regel aktiviert ist und das URL-Muster zur aufgerufenen Adresse passt."
+  },
+  "help_faq_2_q": {
+    "message": "Nativer Host nicht gefunden"
+  },
+  "help_faq_2_a": {
+    "message": "Installationsskript f\u00fcr dein Betriebssystem ausf\u00fchren, dann diese Seite neu laden und \u201eVerbindung pr\u00fcfen\u201c anklicken."
+  },
+  "help_faq_3_q": {
+    "message": "Browser \u00f6ffnet sich nicht"
+  },
+  "help_faq_3_a": {
+    "message": "Programmpfad pr\u00fcfen. Auto-Erkennung nutzen oder Pfad manuell eintragen, z.\u00a0B."
+  },
+  "help_faq_4_q": {
+    "message": "Erweiterung reagiert nicht nach der Installation"
+  },
+  "help_faq_4_a": {
+    "message": "Das Host-Manifest muss unter (Linux/macOS) oder in der Registry (Windows) liegen. Die Installationsskripte erledigen das automatisch."
+  }
+}
